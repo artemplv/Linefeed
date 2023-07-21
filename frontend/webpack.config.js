@@ -16,8 +16,8 @@ const config = {
   },
   devServer: {
     port: 3000,
-    watchFiles: "./src",
-    historyApiFallback: true
+    watchFiles: './src',
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -45,7 +45,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
     }),
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
