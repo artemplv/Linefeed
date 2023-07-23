@@ -10,6 +10,9 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
   ],
+  settings: {
+    'import/resolver': 'webpack',
+  },
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -29,5 +32,6 @@ module.exports = {
         code: 120,
       },
     ],
+    'default-param-last': 0,
   },
 };

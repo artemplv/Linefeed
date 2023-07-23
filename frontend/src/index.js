@@ -4,15 +4,14 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { restoreCSRF } from './api';
+import configureStore from 'store';
+import { restoreSession } from 'store/actions/session';
 
 import App from './App';
 
-import configureStore from './store';
-
 const store = configureStore();
 
-const renderApplication = () => {
+const renderApp = () => {
   const root = createRoot(document.getElementById('root'));
 
   root.render(
@@ -26,8 +25,9 @@ const renderApplication = () => {
   );
 };
 
-if (sessionStorage.getItem('X-CSRF-Token') === null) {
-  restoreCSRF().then(renderApplication);
+if (sessionStorage.getItem('currentUser') === null
+  || sessionStorage.getItem('X-CSRF-Token') === null) {
+  store.dispatch(restoreSession()).then(renderApp);
 } else {
-  renderApplication();
+  renderApp();
 }

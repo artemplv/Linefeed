@@ -47,8 +47,13 @@ const config = {
     ],
   },
   resolve: {
-    modules: ['src', 'node_modules'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.json'],
+    alias: {
+      store: path.resolve(__dirname, 'src/store'),
+      api: path.resolve(__dirname, 'src/api'),
+      utils: path.resolve(__dirname, 'src/utils'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
