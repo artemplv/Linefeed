@@ -18,6 +18,13 @@ const config = {
     port: 3000,
     watchFiles: './src',
     historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        router: () => 'http://localhost:5000',
+        logLevel: 'debug',
+      },
+    },
   },
   module: {
     rules: [
