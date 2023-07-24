@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "main": "./src/index.js",
   "proxy": "http://localhost:5000",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "build": "BUILD_PATH='../public' webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "cd .. && husky install frontend/.husky",
     "lint": "eslint --ext .jsx --ext .js src/"
