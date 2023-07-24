@@ -9,16 +9,18 @@ import LoginFormPage from 'components/LoginFormPage';
 import SignupFormPage from 'components/SignupFormPage';
 import LogoutButton from 'components/LogoutButton';
 
+import './App.scss';
+
 function App() {
   return (
     <Switch>
-      <Route path="/login" component={LoginFormPage} />
+      <Route path="/signin" component={LoginFormPage} />
       <Route path="/signup" component={SignupFormPage} />
 
       <Route exact path="/">
         <>
           <div style={{ display: 'flex', gap: '10px' }}>
-            <Link to="/login">
+            <Link to="/signin">
               Login
             </Link>
 

@@ -3,8 +3,18 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import {
+  Redirect,
+  Link,
+} from 'react-router-dom';
 import { login } from 'store/actions/session';
+
+import TextInput from 'components/TextInput';
+import Button from 'components/Button';
+
+import './style.scss';
+
+import logo from 'assets/images/slack-logo-full.svg';
 
 function LoginFormPage() {
   const [email, setEmail] = useState('');
@@ -37,44 +47,66 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {
+    <div className="signin-form-page">
+      <header>
+        <div className="left-col" />
+        <div className="center-col">
+          <Link to="/">
+            <img src={logo} height={26} alt="logo" />
+          </Link>
+        </div>
+        <div className="right-col">
+          <div className="sidelink">
+            New to Slack?
+            <br />
+            <Link
+              to="/signup"
+              className="bold"
+            >
+              Create an account
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <h1 className="heading">Sign in to Slack</h1>
+        <p className="subheading">
+          We suggest using the
+          {' '}
+          <b>email address you use at work.</b>
+        </p>
+
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {
             errors.map((msg) => (
               <li key={msg}>{msg}</li>
             ))
           }
-        </ul>
+          </ul>
 
-        <label>
-          Email:
-          <input
+          <TextInput
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Email"
+            placeholder="name@work-email.com"
           />
-        </label>
 
-        <br />
-
-        <label>
-          Password:
-          <input
+          <TextInput
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
           />
-        </label>
 
-        <br />
+          <Button submit>
+            Sign In With Email
+          </Button>
+        </form>
+      </main>
 
-        <input type="submit" value="Log In" />
-      </form>
-    </>
+    </div>
   );
 }
 
