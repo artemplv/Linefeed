@@ -1,7 +1,5 @@
 import React from 'react';
 
-import LogoutButton from 'components/LogoutButton';
-
 import Header from './Header';
 
 function HomePage() {
@@ -10,8 +8,9 @@ function HomePage() {
       <Header />
 
       <main className="home-page-main">
-        <h1>Homepage</h1>
-        <LogoutButton />
+        <section className="main-billboard">
+          <h1>Homepage</h1>
+        </section>
       </main>
     </>
   );

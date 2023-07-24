@@ -66,6 +66,11 @@
       align-items: center;
       gap: 1.25rem;
       padding: 1rem 0;
+
+      button {
+        margin-bottom: 0;
+        font-size: inherit;
+      }
     }
   }
 }

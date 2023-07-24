@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import logo from 'assets/images/slack-logo-full-light.svg';
+
+import LogoutButton from 'components/LogoutButton';
 
 const linksList = [
   {
@@ -17,6 +20,8 @@ const linksList = [
 ];
 
 function Header() {
+  const sessionUser = useSelector((state) => state.session.user);
+
   return (
     <header>
       <nav className="main-nav">
@@ -44,19 +49,27 @@ function Header() {
               }
             </ul>
             <div className="auth-links">
-              <Link
-                className="light bold nowrap"
-                to="/signin"
-              >
-                Sign In
-              </Link>
+              {
+                sessionUser ? (
+                  <LogoutButton />
+                ) : (
+                  <>
+                    <Link
+                      className="light bold nowrap"
+                      to="/signin"
+                    >
+                      Sign In
+                    </Link>
 
-              <Link
-                className="button light uppercase"
-                to="/signup"
-              >
-                Try for free
-              </Link>
+                    <Link
+                      className="button light uppercase"
+                      to="/signup"
+                    >
+                      Try for free
+                    </Link>
+                  </>
+                )
+              }
             </div>
           </nav>
         </div>

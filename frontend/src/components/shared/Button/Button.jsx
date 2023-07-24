@@ -6,11 +6,12 @@ function Button(props) {
     onClick = () => {},
     children,
     submit = false,
+    variant = '',
   } = props;
 
   return (
     <button
-      className="button"
+      className={`button ${variant}`}
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
     >

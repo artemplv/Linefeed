@@ -1,30 +1,23 @@
 import React from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import Button from 'components/shared/Button';
 import { logout } from 'store/actions/session';
 
 function LogoutButton() {
   const dispatch = useDispatch();
-
-  const sessionUser = useSelector((state) => state.session.user);
-
-  if (!sessionUser) {
-    return null;
-  }
 
   const handleClick = () => {
     dispatch(logout());
   };
 
   return (
-    <button
-      type="button"
+    <Button
       onClick={handleClick}
+      variant="secondary"
     >
-      Logout
-    </button>
+      Sign Out
+    </Button>
   );
 }
 
