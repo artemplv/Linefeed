@@ -2,21 +2,41 @@
 @import 'assets/variables';
 
 body {
+  font-family: $regular-font-family;
   color: $text-main;
   font-size: 15px;
-  font-family: $regular-font-family;
   line-height: 1.5;
   font-weight: initial;
   background-color: #fff;
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
   color: $text-link;
   text-decoration: none;
+  margin-bottom: 0;
+  font-size: inherit;
+  letter-spacing: 0.05em;
+
+  &.light {
+    color: #fff;
+  }
 
   &:hover {
     color: $text-link-dark;
     text-decoration: underline;
+    
+    &.light {
+      color: #fff;
+    }
+    &.button {
+      text-decoration: none;
+    }
   }
 }
 
@@ -47,4 +67,12 @@ form {
   margin-bottom: 20px;
   max-width: 700px;
   text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
