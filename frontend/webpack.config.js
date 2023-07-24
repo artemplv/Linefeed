@@ -8,7 +8,6 @@ require('dotenv').config();
 const config = {
   entry: [
     path.resolve(__dirname, 'src', 'index.js'),
-    // path.resolve(__dirname, 'src', 'index.scss'),
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -18,6 +17,13 @@ const config = {
     port: 3000,
     watchFiles: './src',
     historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        router: () => 'http://localhost:5000',
+        logLevel: 'debug',
+      },
+    },
   },
   module: {
     rules: [
@@ -26,22 +32,41 @@ const config = {
         use: ['babel-loader'],
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.s?[ac]ss$/, // applies to css/scss/sass files
-      //   use: [
-      //     MiniCssExtractPlugin.loader, // create bundled css file
-      //     {
-      //       loader: 'css-loader', // resolves @import statements
-      //       options: { url: false }, // don't resolve url() statements
-      //     },
-      //     'sass-loader', // compiles sass to css
-      //   ],
-      // },
+      {
+        test: /\.s?[ac]ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { url: false },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.svg/,
+        type: 'asset/inline',
+      },
     ],
   },
   resolve: {
-    modules: ['src', 'node_modules'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.json'],
+    alias: {
+      store: path.resolve(__dirname, 'src/store'),
+      api: path.resolve(__dirname, 'src/api'),
+      utils: path.resolve(__dirname, 'src/utils'),
+      components: path.resolve(__dirname, 'src/components'),
+      assets: path.resolve(__dirname, 'src/assets'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

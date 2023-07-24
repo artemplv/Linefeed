@@ -1,0 +1,24 @@
+@import 'assets/variables';
+
+.home-page-main {
+  display: block;
+
+  .main-billboard {
+    background-color: $primary-background;
+    color: #fff;
+    padding-top: 7rem;
+
+    // temporary
+    height: 100vh;
+    
+    
+    @media screen and (min-width: 48rem) {
+      padding-top: 8rem;
+      max-width: none;
+    }
+  
+    @media screen and (max-width: 440px) {
+      padding-top: 12rem;
+    }  
+  }
+}

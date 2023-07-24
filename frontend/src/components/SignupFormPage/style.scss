@@ -1,0 +1,13 @@
+@import 'assets/variables';
+
+.signup-form-page {
+  .signin-existing-workspaces {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: $text-descriptive;
+  }
+}

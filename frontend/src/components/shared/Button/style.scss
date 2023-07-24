@@ -1,0 +1,64 @@
+@import 'assets/variables';
+
+.button, input[type=submit] {
+  width: 100%;
+  align-items: center;
+  -webkit-appearance: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  outline: none;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  box-sizing: border-box;
+  transition: box-shadow 420ms cubic-bezier(.165,.84,.44,1),color 420ms cubic-bezier(.165,.84,.44,1),background 420ms cubic-bezier(.165,.84,.44,1);
+
+  background-color: $primary;
+  border: none;
+  color: #fff;
+  margin-bottom: 20px;
+
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $highlight-font-family;
+  height: 44px;
+  min-width: 96px;
+  padding: 0 16px 3px;
+
+  &.light {
+    color: $primary;
+    background-color: #fff;
+  }
+
+  &.secondary {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px #fff;
+  }
+
+  &:hover {
+    background-color: #4a154be6;
+    border: none;
+
+    &.light {
+      color: $primary;
+      background-color: #fff;
+      box-shadow: inset 0 0 0 2px #611f69;
+    }
+
+    &.secondary {
+      box-shadow: inset 0 0 0 2px #fff;
+      background-color: transparent;
+    }
+  }
+}
+
+a.button {
+  margin-bottom: 0;
+  font-size: inherit;
+}
