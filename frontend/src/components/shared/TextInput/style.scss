@@ -18,6 +18,7 @@
 
   &:focus {
     -webkit-appearance: none;
+    appearance: none;
     border-color: #0000;
     border-radius: 4px;
     box-shadow: 0 0 0 1px $text-link,0 0 0 5px #1d9bd14d;

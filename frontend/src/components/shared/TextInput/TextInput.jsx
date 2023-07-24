@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import './style.scss';
-
 function TextInput(props) {
   const {
     value,
