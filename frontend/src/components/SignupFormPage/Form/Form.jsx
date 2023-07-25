@@ -11,13 +11,13 @@ function Form() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors([]);
+    setErrors({});
 
     const body = {
       firstName,
@@ -30,25 +30,18 @@ function Form() {
       await dispatch(signup(body));
     } catch (res) {
       const data = await res.json();
-      setErrors(data.errors);
+      setErrors(data.errorFields);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
-        {
-          errors.map((msg) => (
-            <li key={msg}>{msg}</li>
-          ))
-        }
-      </ul>
-
       <TextInput
         type="email"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder="name@work-email.com"
+        error={errors.email}
       />
 
       <TextInput
@@ -56,6 +49,7 @@ function Form() {
         value={firstName}
         onChange={(event) => setFirstName(event.target.value)}
         placeholder="First name"
+        error={errors.firstName}
       />
 
       <TextInput
@@ -63,6 +57,7 @@ function Form() {
         value={lastName}
         onChange={(event) => setLastName(event.target.value)}
         placeholder="Last name"
+        error={errors.lastName}
       />
 
       <TextInput
@@ -70,6 +65,7 @@ function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         placeholder="Password"
+        error={errors.password}
       />
 
       <Button submit>

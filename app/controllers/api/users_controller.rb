@@ -8,7 +8,8 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      @errors = @user.errors
+      render 'api/errors/validation_errors', status: :unprocessable_entity
     end
   end
 
