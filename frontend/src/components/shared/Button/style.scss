@@ -33,6 +33,7 @@
   &.light {
     color: $primary;
     background-color: #fff;
+    border: 1px solid $primary;
   }
 
   &.secondary {
@@ -43,7 +44,6 @@
 
   &:hover {
     background-color: #4a154be6;
-    border: none;
 
     &.light {
       color: $primary;

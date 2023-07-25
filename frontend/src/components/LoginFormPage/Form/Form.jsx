@@ -9,6 +9,8 @@ import { login } from 'store/actions/session';
 import TextInput from 'components/shared/TextInput';
 import Button from 'components/shared/Button';
 
+const demoUserCreds = { credential: 'johndoe@example.com', password: 'password' };
+
 function Form() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -82,7 +84,6 @@ function Form() {
       const data = await res.json();
       const errorMessage = data.errors ? data.errors[0] : null;
       setErrors({
-        email: errorMessage,
         password: errorMessage,
       });
     }
@@ -94,6 +95,10 @@ function Form() {
     if (errors[fieldName]) {
       validateField(event, fieldName, fieldType);
     }
+  };
+
+  const loginDemoUser = () => {
+    dispatch(login(demoUserCreds));
   };
 
   return (
@@ -120,6 +125,13 @@ function Form() {
 
       <Button submit>
         Sign In With Email
+      </Button>
+
+      <Button
+        onClick={loginDemoUser}
+        variant="light"
+      >
+        Demo Login
       </Button>
     </form>
   );
