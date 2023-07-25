@@ -47,8 +47,11 @@
     font-size: 15px;
 
     span {
-      text-transform: capitalize;
       flex: 1;
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
     }
 
     .alert-icon {
