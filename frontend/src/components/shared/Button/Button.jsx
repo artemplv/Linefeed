@@ -21,13 +21,14 @@ function Button(props) {
 }
 
 Button.defaultProps = {
+  onClick: () => {},
   submit: false,
   variant: '',
 };
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
+  onClick: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   submit: PropTypes.bool,
   variant: PropTypes.string,
 };

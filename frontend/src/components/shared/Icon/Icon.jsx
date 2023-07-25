@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import sprite from 'assets/icons/feather-sprite.svg';
 
 function Icon(props) {
   const {
     name,
-    className = '',
+    className,
   } = props;
 
   return (
@@ -23,5 +23,14 @@ function Icon(props) {
     </i>
   );
 }
+
+Icon.defaultProps = {
+  className: '',
+};
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
 
 export default Icon;
