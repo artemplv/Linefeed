@@ -10,11 +10,10 @@
 #
 class Workspace < ApplicationRecord
   belongs_to :owner,
-    class_name: 'User',
-    dependent: :destroy
+    class_name: 'User'
 
-    has_many :workspace_users,
-      dependent: :destroy
-    has_many :users,
-      through: :workspace_users
+  has_many :workspace_users,
+    dependent: :destroy
+  has_many :users,
+    through: :workspace_users
   end

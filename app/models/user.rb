@@ -32,6 +32,11 @@ class User < ApplicationRecord
   has_many :workspaces,
     through: :workspace_users
 
+  has_many :own_workspaces,
+    class_name: 'Workspace',
+    foreign_key: :owner_id,
+    dependent: :nullify
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user&.authenticate(password)

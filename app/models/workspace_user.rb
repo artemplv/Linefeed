@@ -7,8 +7,6 @@
 #  user_id      :bigint           not null
 #
 class WorkspaceUser < ApplicationRecord
-  belongs_to :user,
-    dependent: :destroy
-  belongs_to :workspace,
-    dependent: :destroy
+  belongs_to :user
+  belongs_to :workspace
 end
