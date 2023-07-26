@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Header from 'components/shared/Header';
 
 function HomePage() {
   return (
@@ -8,7 +8,7 @@ function HomePage() {
       <Header />
 
       <main className="home-page-main">
-        <section className="main-billboard">
+        <section className="hero main-hero">
           <h1>Homepage</h1>
         </section>
       </main>

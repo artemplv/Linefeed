@@ -20,7 +20,7 @@ const linksList = [
 ];
 
 function Header() {
-  const sessionUser = useSelector((state) => state.session.user);
+  const isAuth = useSelector((state) => !!state.session.user);
 
   return (
     <header>
@@ -50,8 +50,16 @@ function Header() {
             </ul>
             <div className="auth-links">
               {
-                sessionUser ? (
-                  <LogoutButton />
+                isAuth ? (
+                  <>
+                    <LogoutButton />
+                    <Link
+                      className="button light uppercase"
+                      to="/workspaces/new"
+                    >
+                      Create a new workspace
+                    </Link>
+                  </>
                 ) : (
                   <>
                     <Link

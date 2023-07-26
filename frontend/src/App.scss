@@ -76,3 +76,18 @@ form {
 .nowrap {
   white-space: nowrap;
 }
+
+.hero {
+  background-color: $primary-background;
+  color: #fff;
+  padding-top: 7rem;
+
+  @media screen and (min-width: 48rem) {
+    padding-top: 8rem;
+    max-width: none;
+  }
+
+  @media screen and (max-width: 440px) {
+    padding-top: 12rem;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import AuthPageBase from 'components/shared/AuthPageBase';
+import FormPageWrapper from 'components/shared/FormPageWrapper';
 import Form from './Form';
 
 function SignupFormPage() {
   return (
-    <AuthPageBase
+    <FormPageWrapper
       className="signup-form-page"
     >
       <h1 className="heading">First, enter your email</h1>
@@ -27,7 +27,7 @@ function SignupFormPage() {
           Sign in to an existing workspace
         </Link>
       </div>
-    </AuthPageBase>
+    </FormPageWrapper>
   );
 }
 

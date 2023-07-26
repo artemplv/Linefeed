@@ -1,28 +1,20 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
-  Redirect,
   Link,
 } from 'react-router-dom';
 
 import logo from 'assets/images/slack-logo-full.svg';
 
-function AuthPageBase(props) {
+function FormPageWrapper(props) {
   const {
-    className = '',
+    className,
     sidelink,
     children,
   } = props;
 
-  const sessionUser = useSelector((state) => state.session.user);
-
-  if (sessionUser) {
-    return <Redirect to="/" />;
-  }
-
   return (
-    <div className={`auth-page ${className}`}>
+    <div className={`form-page ${className}`}>
       <header>
         <div className="left-col" />
 
@@ -50,11 +42,22 @@ function AuthPageBase(props) {
         </div>
       </header>
 
-      <main className="auth-page-main-wrapper">
+      <main className="form-page-main-wrapper">
         {children}
       </main>
     </div>
   );
 }
 
-export default AuthPageBase;
+FormPageWrapper.defaultProps = {
+  className: '',
+  sidelink: false,
+};
+
+FormPageWrapper.propTypes = {
+  className: PropTypes.string,
+  sidelink: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+};
+
+export default FormPageWrapper;

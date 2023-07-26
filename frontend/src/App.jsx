@@ -4,6 +4,10 @@ import {
   Route,
 } from 'react-router-dom';
 
+import {
+  withoutAuth,
+} from 'components/hocs/secureWrapper';
+
 import HomePage from 'components/HomePage';
 import LoginFormPage from 'components/LoginFormPage';
 import SignupFormPage from 'components/SignupFormPage';
@@ -13,11 +17,11 @@ import './App.scss';
 function App() {
   return (
     <Switch>
-      <Route path="/signin" component={LoginFormPage} />
+      <Route path="/signin" component={withoutAuth(LoginFormPage)} />
 
-      <Route path="/signup" component={SignupFormPage} />
+      <Route path="/signup" component={withoutAuth(SignupFormPage)} />
 
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={withoutAuth(HomePage)} />
 
       <Route path="/">
         <h2>

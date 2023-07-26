@@ -63,11 +63,14 @@
 
     .auth-links {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
       gap: 1.25rem;
       padding: 1rem 0;
+      flex: 1;
 
-      button {
+      .button {
+        width: auto;
         margin-bottom: 0;
         font-size: inherit;
       }

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import AuthPageBase from 'components/shared/AuthPageBase';
+import FormPageWrapper from 'components/shared/FormPageWrapper';
 import Form from './Form';
 
 function LoginFormPage() {
   return (
-    <AuthPageBase
+    <FormPageWrapper
       className="signin-form-page"
       sidelink
     >
@@ -17,7 +17,7 @@ function LoginFormPage() {
       </p>
 
       <Form />
-    </AuthPageBase>
+    </FormPageWrapper>
   );
 }
 
