@@ -1,0 +1,53 @@
+@import 'assets/variables';
+
+.create-workspace-banner {
+  margin-bottom: 3rem;
+  border: 4px solid $ghost-transparent;
+  border-radius: 9px;
+
+  .wrapper {
+    padding: 1rem;
+    background-color: $background-empty;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    align-items: center;
+    color: $default;
+
+    @media screen and (min-width: 0) and (max-width: 959px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3,auto);
+    }
+
+    img:first-child {
+      margin: -1rem -1rem -47px;
+      border-radius: 5px;
+      grid-area: 1/1/2/2;
+
+      @media screen and (min-width: 0) and (max-width: 959px) {
+        grid-area: 3/1/4/2;
+        margin-top: 1rem;
+        border-radius: unset;
+      }
+    }
+
+    img + p {
+      margin: 0rem;
+      padding-left: 0;
+      padding-right: 1rem;
+      font-size: $subheading-font-size;
+
+      @media screen and (min-width: 0) and (max-width: 959px) {
+        margin-bottom: 1rem;
+        padding: 0;
+      }
+    }
+
+    p + a {
+      grid-area: unset;
+    }
+  }
+}

@@ -12,7 +12,7 @@ html {
 body {
   font-family: $regular-font-family;
   color: $text-main;
-  font-size: 15px;
+  font-size: $base-font-size;
   line-height: 1.5;
   font-weight: initial;
   background-color: #fff;
@@ -62,7 +62,7 @@ form {
 
 .heading {
   font-family: $highlight-font-family;
-  font-size: 3rem;
+  font-size: $heading-font-size;
   font-weight: 700;
   letter-spacing: -.75px;
   line-height: normal;
@@ -74,7 +74,7 @@ form {
 
 .subheading {
   color: $text-secondary;
-  font-size: 18px;
+  font-size: $subheading-font-size;
   margin-top: 0;
   margin-bottom: 20px;
   max-width: 700px;

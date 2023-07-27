@@ -19,7 +19,7 @@ import './App.scss';
 function App() {
   return (
     <Switch>
-      <Route path="/signin" component={withoutAuth(LoginFormPage)} />
+      <Route path="/signin" component={LoginFormPage} />
 
       <Route path="/signup" component={withoutAuth(SignupFormPage)} />
 

@@ -8,12 +8,18 @@ $text-main: #1d1c1d;
 $text-secondary: #454245;
 $text-descriptive: #616061;
 $text-link: #1264a3;
+$text-link-light: #36c5f0;
 $text-link-dark: #0b4c8c;
 $text-error: #e01e5a;
 $background-primary: #541554;
 $background-primary-dark: #4a154b;
 $background-flat: #ecdeec;
+$background-empty: #fff;
 
 // fonts
 $regular-font-family: 'Roboto', Helvetica, Arial, sans-serif;
 $highlight-font-family: 'Lato', Helvetica, Arial, sans-serif;
+
+$base-font-size: 15px;
+$heading-font-size: 3rem;
+$subheading-font-size: 1.15rem;
