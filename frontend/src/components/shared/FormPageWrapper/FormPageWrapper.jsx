@@ -32,7 +32,7 @@ function FormPageWrapper(props) {
                 <br />
                 <Link
                   to="/signup"
-                  className="bold"
+                  className="link bold"
                 >
                   Create an account
                 </Link>

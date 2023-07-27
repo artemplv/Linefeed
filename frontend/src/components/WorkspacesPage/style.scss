@@ -1,0 +1,21 @@
+@import 'assets/variables';
+
+.workspaces-page-main {
+  .workspaces-hero {
+    padding-bottom: 10rem;
+  }
+
+  .heading {
+    display: flex;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    
+    img {
+      display: inline-flex;
+      align-self: center;
+      width: 1em;
+      height: 1em;
+      margin-right: 0.25rem;
+    }
+  }
+}

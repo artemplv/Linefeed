@@ -1,0 +1,46 @@
+@import 'assets/variables';
+
+.workspaces-list-item {
+  padding: 1rem;
+  transition: 125ms;
+
+  &:not(:first-child) {
+    border-top: 1px solid $ghost-light;
+  }
+
+  .workspaces-list-item-details {
+    display: flex;
+    align-items: center;
+
+    .workspace-avatar {
+      margin-right: 1rem;
+    }
+
+    .workspace-detail-content {
+      display: flex;
+      flex-direction: column;
+      margin: auto 0;
+
+      .workspace-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .workspace-members-count {
+        color: $text-descriptive;
+        font-size: .875rem;
+        line-height: 20px;
+      }
+    }
+
+    .launch-button {
+      width: auto;
+      height: auto;
+      margin-left: auto;
+      padding: 1rem;
+      font-size: .85rem;
+      letter-spacing: 0.1em;
+    }
+  }
+}

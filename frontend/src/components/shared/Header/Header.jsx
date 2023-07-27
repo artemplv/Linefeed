@@ -25,7 +25,7 @@ function Header() {
   return (
     <header>
       <nav className="main-nav">
-        <div className="content-container">
+        <div className="main-nav-content-container">
           <div className="logo-container">
             <Link to="/">
               <img src={logo} width={100} alt="logo" />
@@ -38,7 +38,7 @@ function Header() {
                 linksList.map((item) => (
                   <li key={item.id}>
                     <Link
-                      className="light"
+                      className="link light"
                       to={{ pathname: item.url }}
                       target="_blank"
                     >
@@ -63,7 +63,7 @@ function Header() {
                 ) : (
                   <>
                     <Link
-                      className="light bold nowrap"
+                      className="link light bold nowrap"
                       to="/signin"
                     >
                       Sign In

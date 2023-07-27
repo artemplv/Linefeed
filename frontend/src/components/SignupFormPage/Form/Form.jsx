@@ -153,7 +153,10 @@ function Form() {
         onBlur={validateField}
       />
 
-      <Button submit>
+      <Button
+        submit
+        variant="dark"
+      >
         Sign Up
       </Button>
     </form>

@@ -1,0 +1,26 @@
+@import 'assets/variables';
+
+.workspaces-list {
+  margin-bottom: 3rem;
+  border: 4px solid $ghost-transparent;
+  border-radius: 9px;
+  color: $text-main;
+
+  .workspaces-list-title-bar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: $background-flat;
+    font-size: 1.125rem;
+    color: $default;
+    border-radius: 5px 5px 0 0;
+    min-height: calc(50px + 2rem);
+  }
+
+  .workspaces-list-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+  }
+}

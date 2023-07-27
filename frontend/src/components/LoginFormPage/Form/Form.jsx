@@ -123,7 +123,10 @@ function Form() {
         error={errors.password}
       />
 
-      <Button submit>
+      <Button
+        submit
+        variant="dark"
+      >
         Sign In With Email
       </Button>
 

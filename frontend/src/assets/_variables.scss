@@ -1,12 +1,18 @@
 // colors
-$primary: #4a154b;
-$primary-background: #541554;
+$default: #000;
+$primary: #611f69;
+$primary-dark: #4a154b;
+$ghost-light: #ebeaeb;
+$ghost-transparent: rgba(255,255,255,.2);
 $text-main: #1d1c1d;
 $text-secondary: #454245;
 $text-descriptive: #616061;
 $text-link: #1264a3;
 $text-link-dark: #0b4c8c;
 $text-error: #e01e5a;
+$background-primary: #541554;
+$background-primary-dark: #4a154b;
+$background-flat: #ecdeec;
 
 // fonts
 $regular-font-family: 'Roboto', Helvetica, Arial, sans-serif;

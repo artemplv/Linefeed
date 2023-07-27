@@ -22,7 +22,7 @@ function SignupFormPage() {
         Already using Slack?
         <Link
           to="/signin"
-          className="bold"
+          className="link bold"
         >
           Sign in to an existing workspace
         </Link>
