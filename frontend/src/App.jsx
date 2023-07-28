@@ -14,6 +14,7 @@ import LoginFormPage from 'components/LoginFormPage';
 import SignupFormPage from 'components/SignupFormPage';
 import WorkspacesPage from 'components/WorkspacesPage';
 import WorkspaceLayout from 'components/WorkspaceLayout';
+import NewWorkspace from 'components/NewWorkspace';
 
 import './App.scss';
 
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'new',
-            element: <h1>New Workspace</h1>,
+            element: <NewWorkspace />,
           },
           // {
           //   path: 'channels/:channelId',
