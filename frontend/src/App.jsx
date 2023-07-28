@@ -13,7 +13,7 @@ import HomePage from 'components/HomePage';
 import LoginFormPage from 'components/LoginFormPage';
 import SignupFormPage from 'components/SignupFormPage';
 import WorkspacesPage from 'components/WorkspacesPage';
-import Workspace from 'components/Workspace';
+import WorkspaceLayout from 'components/WorkspaceLayout';
 
 import './App.scss';
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/workspaces/:workspaceId',
-    Component: withAuth(Workspace),
+    Component: withAuth(WorkspaceLayout),
     // errorElement: <h2>Error</h2>,
     children: [
       {

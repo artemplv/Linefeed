@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 
-function Workspace() {
+function WorkspaceLayout() {
   return (
     <div className="workspace-layout">
       <TopNav />
@@ -20,4 +20,4 @@ function Workspace() {
   );
 }
 
-export default Workspace;
+export default WorkspaceLayout;
