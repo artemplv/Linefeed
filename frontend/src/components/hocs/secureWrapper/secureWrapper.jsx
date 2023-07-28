@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function withAuth(WrappedComponent) {
@@ -8,7 +8,7 @@ function withAuth(WrappedComponent) {
     const isAuth = useSelector((state) => !!state.session.user);
 
     if (!isAuth) {
-      return <Redirect to="/" />;
+      return <Navigate to="/" />;
     }
 
     return (
@@ -22,7 +22,7 @@ function withoutAuth(WrappedComponent) {
     const isAuth = useSelector((state) => !!state.session.user);
 
     if (isAuth) {
-      return <Redirect to="/workspaces" />;
+      return <Navigate to="/workspaces" />;
     }
 
     return (

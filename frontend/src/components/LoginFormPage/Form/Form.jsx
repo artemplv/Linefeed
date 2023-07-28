@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   useDispatch,
 } from 'react-redux';
@@ -18,7 +18,7 @@ function Form() {
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const validateForm = () => {
     let formValid = true;
@@ -82,7 +82,8 @@ function Form() {
 
     try {
       await dispatch(login(body));
-      history.push('/workspaces');
+
+      navigate('/workspaces');
     } catch (res) {
       const data = await res.json();
       const errorMessage = data.errors ? data.errors[0] : null;
@@ -100,8 +101,9 @@ function Form() {
     }
   };
 
-  const loginDemoUser = () => {
-    dispatch(login(demoUserCreds));
+  const loginDemoUser = async () => {
+    await dispatch(login(demoUserCreds));
+    navigate('/workspaces');
   };
 
   return (

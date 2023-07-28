@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import {
   Link,
 } from 'react-router-dom';
@@ -57,7 +57,7 @@ FormPageWrapper.defaultProps = {
 FormPageWrapper.propTypes = {
   className: PropTypes.string,
   sidelink: PropTypes.bool,
-  children: PropTypes.element.isRequired,
+  children: oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired,
 };
 
 export default FormPageWrapper;

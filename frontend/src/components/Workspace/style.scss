@@ -1,0 +1,43 @@
+@import 'assets/variables';
+
+.workspace-layout {
+  display: grid;
+  grid-template-rows: auto;
+  overflow: visible;
+  position: relative;
+  height: 100vh;
+
+  grid-template-columns: 220px auto;
+  grid-template-rows: 44px auto;
+  grid-template-areas:
+    'workspace-top-nav workspace-top-nav'
+    'workspace-sidebar workspace-primary-view';
+}
+
+.workspace-primary-view {
+  display: grid;
+  grid-area: workspace-primary-view;
+  grid-template-areas: 'workspace-primary-view-contents';
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  max-height: calc(100vh - 44px);
+}
+
+.workspace-primary-view-contents {
+  display: flex;
+  flex-direction: column;
+  grid-area: workspace-primary-view-contents;
+}
+
+.workspace-top-nav {
+  grid-area: workspace-top-nav;
+  background-color: $primary-darkest;
+  box-shadow: 0 1px 0 0 rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.workspace-sidebar {
+  grid-area: workspace-sidebar;
+  background-color: $primary-darker;
+  color: #fff;
+}

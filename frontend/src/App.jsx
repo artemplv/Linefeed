@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Switch,
-  Route,
+  createBrowserRouter,
+  RouterProvider,
 } from 'react-router-dom';
 
 import {
@@ -13,27 +13,68 @@ import HomePage from 'components/HomePage';
 import LoginFormPage from 'components/LoginFormPage';
 import SignupFormPage from 'components/SignupFormPage';
 import WorkspacesPage from 'components/WorkspacesPage';
+import Workspace from 'components/Workspace';
 
 import './App.scss';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: withoutAuth(HomePage),
+    errorElement: <h2>Error</h2>,
+  },
+  {
+    path: '/signin',
+    Component: LoginFormPage,
+  },
+  {
+    path: '/signup',
+    Component: withoutAuth(SignupFormPage),
+  },
+  {
+    path: '/workspaces',
+    Component: withAuth(WorkspacesPage),
+  },
+  {
+    path: '/workspaces/:workspaceId',
+    Component: withAuth(Workspace),
+    // errorElement: <h2>Error</h2>,
+    children: [
+      {
+        errorElement: <h2>Error</h2>,
+        children: [
+          {
+            index: true,
+            element: <h1>Hi from workspace</h1>,
+          },
+          {
+            path: 'new',
+            element: <h1>New Workspace</h1>,
+          },
+          // {
+          //   path: 'channels/:channelId',
+          //   element: <h1>Hi from channel</h1>,
+          // },
+          // {
+          //   path: 'chats/:chatId',
+          //   element: <h1>Hi from chat</h1>,
+          // },
+          // {
+          //   path: '*',
+          //   element: <h2>404 Not Found</h2>,
+          // },
+        ],
+      },
+    ],
+  },
+  // {
+  //   path: '*',
+  //   element: <h2>404 Not Found</h2>,
+  // },
+]);
+
 function App() {
-  return (
-    <Switch>
-      <Route path="/signin" component={LoginFormPage} />
-
-      <Route path="/signup" component={withoutAuth(SignupFormPage)} />
-
-      <Route path="/workspaces" component={withAuth(WorkspacesPage)} />
-
-      <Route exact path="/" component={withoutAuth(HomePage)} />
-
-      <Route path="/">
-        <h2>
-          404 Not Found
-        </h2>
-      </Route>
-    </Switch>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
