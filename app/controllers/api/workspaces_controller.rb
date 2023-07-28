@@ -11,4 +11,20 @@ class Api::WorkspacesController < ApplicationController
 
     render :show
   end
+
+  def update
+    @workspace = Workspace.find(params[:id])
+
+    if @workspace.update(workspace_params)
+      render :show
+    else
+      render 'api/errors/validation_errors', status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def workspace_params
+    params.require(:workspace).permit(:name, :owner_id);
+  end
 end
