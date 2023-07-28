@@ -42,6 +42,6 @@ class Api::WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:name, :owner_id);
+    params.fetch(:workspace, {}).permit(:name)
   end
 end
