@@ -1,0 +1,28 @@
+.setup-page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.setup-page-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 940px;
+  padding: 2rem 5rem;
+
+  .step-counter {
+    margin-top: 0;
+    margin-bottom: 1.3rem;
+  }
+
+  .heading, .subheading {
+    text-align: left;
+  }
+  .subheading {
+    max-width: 100%;
+  }
+
+  form .button {
+    max-width: 200px;
+  }
+}

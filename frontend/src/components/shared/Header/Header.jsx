@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import logo from 'assets/images/slack-logo-full-light.svg';
 
 import LogoutButton from 'components/LogoutButton';
+import CreateWorkspaceButton from 'components/shared/CreateWorkspaceButton';
 
 const linksList = [
   {
@@ -53,12 +54,7 @@ function Header() {
                 isAuth ? (
                   <>
                     <LogoutButton />
-                    <Link
-                      className="button light uppercase"
-                      to="/workspaces/new"
-                    >
-                      Create a new workspace
-                    </Link>
+                    <CreateWorkspaceButton />
                   </>
                 ) : (
                   <>

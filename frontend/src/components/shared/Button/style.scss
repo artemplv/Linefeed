@@ -66,6 +66,12 @@
       background-color: transparent;
     }
   }
+
+  &.disabled, &.disabled:hover {
+    background-color: $background-disabled;
+    color: $text-disabled;
+    cursor: default;
+  }
 }
 
 a.button {

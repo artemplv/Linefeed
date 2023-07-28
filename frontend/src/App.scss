@@ -89,6 +89,14 @@ form {
   white-space: nowrap;
 }
 
+.no-margin {
+  margin: 0;
+}
+
+.w-auto {
+  width: auto;
+}
+
 .hero {
   background-color: $background-primary;
   color: #fff;

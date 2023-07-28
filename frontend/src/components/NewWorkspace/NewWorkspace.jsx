@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   useSearchParams,
+  useParams,
   Navigate,
 } from 'react-router-dom';
 
@@ -24,31 +25,38 @@ const STEPS_PARAMS = {
 };
 
 function NewWorkspace() {
+  const {
+    workspaceId,
+  } = useParams();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentStep = searchParams.get('step');
 
-  const setNextStep = (value) => () => setSearchParams({ step: value }, { replace: true });
+  const setNextStep = (value) => () => setSearchParams({ step: value }/* , { replace: true } */);
 
   const stepData = STEPS_PARAMS[currentStep];
 
   if (!stepData) {
-    return <Navigate to="/workspaces" replace />;
+    return <Navigate to={`/workspaces/${workspaceId}/new?step=setup-workspace-name`} replace />;
   }
 
   const currentStepIndex = STEPS_PARAMS[currentStep].index;
   const totalSteps = Object.keys(STEPS_PARAMS).length;
 
   return (
-    <>
-      <p>
-        {`Step ${currentStepIndex} of ${totalSteps}`}
-      </p>
+    <div className="setup-page">
+      <div className="setup-page-content">
+        <p className="step-counter">
+          {`Step ${currentStepIndex} of ${totalSteps}`}
+        </p>
 
-      <stepData.Component
-        onNextStep={setNextStep(stepData.nextStep)}
-      />
-    </>
+        <stepData.Component
+          workspaceId={workspaceId}
+          onNextStep={setNextStep(stepData.nextStep)}
+        />
+      </div>
+    </div>
   );
 }
 

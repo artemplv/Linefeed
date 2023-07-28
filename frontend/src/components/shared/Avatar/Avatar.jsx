@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Avatar(props) {
   const {
-    src,
+    src, // eslint-disable-line no-unused-vars
     size,
     className,
   } = props;
