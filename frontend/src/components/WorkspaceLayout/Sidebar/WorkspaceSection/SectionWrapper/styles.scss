@@ -1,0 +1,31 @@
+@import 'assets/variables';
+
+.workspace-sidebar-section-wrapper {
+  color: #fff;
+  font-size: $subheading-font-size;
+  font-weight: bold;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  border-bottom: 1px solid $primary-darkest;
+
+  &.workspace-sidebar-placeholder-wrapper {
+    background: rgb(82,38,83);
+  }
+
+  h4 {
+    margin: 0;
+    padding: 0 1rem;
+  }
+}
+
+.item-placeholder {
+  width: 65%;
+  background-color: #ffffff1a;
+  border-radius: 8px;
+  height: 15px;
+  margin: 0 16px;
+}

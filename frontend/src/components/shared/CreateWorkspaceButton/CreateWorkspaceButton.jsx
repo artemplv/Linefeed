@@ -26,6 +26,7 @@ function CreateWorkspaceButton() {
         variant="light"
         type="submit"
         className="uppercase no-margin"
+        onClick={handleSubmit}
       >
         Create a new workspace
       </Button>

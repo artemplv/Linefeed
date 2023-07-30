@@ -70,6 +70,7 @@ function SetupWorkspaceName(props) {
         <Button
           variant="dark"
           type="submit"
+          onClick={handleSubmit}
           disabled={!inputValue}
         >
           Next

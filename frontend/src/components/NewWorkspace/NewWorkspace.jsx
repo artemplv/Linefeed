@@ -1,30 +1,49 @@
-import React from 'react';
+import React, {
+  useEffect,
+} from 'react';
 import {
+  useOutletContext,
   useSearchParams,
   useParams,
   Navigate,
 } from 'react-router-dom';
 
+import { sidebarConstants } from 'constants';
+
 import * as Steps from './steps';
 
 const STEPS_PARAMS = {
   'setup-workspace-name': {
-    Component: Steps.SetupWorkspaceName,
-    nextStep: 'add-teammates',
     index: 1,
+    Component: Steps.SetupWorkspaceName,
+    sidebarSections: [],
+    nextStep: 'add-teammates',
   },
   'add-teammates': {
-    Component: Steps.AddUsers,
-    nextStep: 'create-channel',
     index: 2,
+    Component: Steps.AddUsers,
+    sidebarSections: [
+      sidebarConstants.WORKSPACE_SIDEBAR_SECTION,
+      sidebarConstants.CHATS_SIDEBAR_SECTION,
+    ],
+    nextStep: 'create-channel',
   },
   'create-channel': {
-    Component: Steps.CreateChannel,
     index: 3,
+    Component: Steps.CreateChannel,
+    sidebarSections: [
+      sidebarConstants.WORKSPACE_SIDEBAR_SECTION,
+      sidebarConstants.CHATS_SIDEBAR_SECTION,
+    ],
   },
 };
 
 function NewWorkspace() {
+  const {
+    setWorkspaceCreationMode,
+    setSidebarSections,
+  } = useOutletContext();
+
   const {
     workspaceId,
   } = useParams();
@@ -33,7 +52,30 @@ function NewWorkspace() {
 
   const currentStep = searchParams.get('step');
 
-  const setNextStep = (value) => () => setSearchParams({ step: value }/* , { replace: true } */);
+  useEffect(() => {
+    setWorkspaceCreationMode(true);
+
+    return () => {
+      setWorkspaceCreationMode(false);
+      setSidebarSections(sidebarConstants.DEFAULT_SIDEBAR_SECTIONS);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (currentStep) {
+      const {
+        sidebarSections = [],
+      } = STEPS_PARAMS[currentStep];
+
+      setSidebarSections(sidebarSections);
+    }
+  }, [
+    currentStep,
+  ]);
+
+  const setNextStep = (nextStepName) => () => {
+    setSearchParams({ step: nextStepName }/* , { replace: true } */);
+  };
 
   const stepData = STEPS_PARAMS[currentStep];
 
