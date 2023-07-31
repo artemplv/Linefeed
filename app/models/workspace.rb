@@ -16,4 +16,7 @@ class Workspace < ApplicationRecord
     dependent: :destroy
   has_many :users,
     through: :workspace_users
+
+  has_many :channels,
+    dependent: :destroy
   end
