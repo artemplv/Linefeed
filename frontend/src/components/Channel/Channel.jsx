@@ -6,6 +6,8 @@ import {
   useSelector,
 } from 'react-redux';
 
+import Heading from './Heading';
+
 function Channel() {
   const {
     channelId,
@@ -15,7 +17,9 @@ function Channel() {
 
   return (
     <div className="channel-page">
-      {`Hello from channel ${channel.name}`}
+      <div className="channel-page-content">
+        <Heading name={channel.name} />
+      </div>
     </div>
   );
 }

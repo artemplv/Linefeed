@@ -1,0 +1,18 @@
+@import 'assets/variables';
+
+.channel-heading {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid $background-flat;
+
+  .subheading {
+    text-align: left;
+    font-weight: bold;
+
+    .svg-icon {
+      margin-right: 2px;
+    }
+  }
+}
