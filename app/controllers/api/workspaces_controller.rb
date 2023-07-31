@@ -1,4 +1,6 @@
 class Api::WorkspacesController < ApplicationController
+  wrap_parameters include: Workspace.attribute_names
+
   before_action :require_logged_in
 
   def index
@@ -31,6 +33,11 @@ class Api::WorkspacesController < ApplicationController
 
   def update
     @workspace = Workspace.find(params[:id])
+
+    if params[:users]
+      users_ids = User.select(:id).where('email IN (?)', params[:users]);
+      @workspace.users << users_ids
+    end
 
     if @workspace.update(workspace_params)
       render :show
