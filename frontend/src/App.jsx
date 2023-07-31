@@ -52,18 +52,18 @@ const router = createBrowserRouter([
             path: 'new',
             element: <NewWorkspace />,
           },
-          // {
-          //   path: 'channels/:channelId',
-          //   element: <h1>Hi from channel</h1>,
-          // },
-          // {
-          //   path: 'chats/:chatId',
-          //   element: <h1>Hi from chat</h1>,
-          // },
-          // {
-          //   path: '*',
-          //   element: <h2>404 Not Found</h2>,
-          // },
+          {
+            path: 'channels/:channelId',
+            element: <h1>Hi from channel</h1>,
+          },
+          {
+            path: 'chats/:chatId',
+            element: <h1>Hi from chat</h1>,
+          },
+          {
+            path: '*',
+            element: <h2>404 Not Found</h2>,
+          },
         ],
       },
     ],

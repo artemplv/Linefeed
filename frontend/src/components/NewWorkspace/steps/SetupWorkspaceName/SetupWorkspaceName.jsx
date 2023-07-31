@@ -36,14 +36,14 @@ function SetupWorkspaceName(props) {
     return true;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!validateInput()) {
       return;
     }
 
-    dispatch(updateWorkspace(workspaceId)({
+    await dispatch(updateWorkspace(workspaceId)({
       name: inputValue,
     }));
     onNextStep();

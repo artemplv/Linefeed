@@ -32,6 +32,8 @@ function ChatsSection(props) {
         users.map((user) => (
           <ChatItem
             key={user.id}
+            workspaceId={workspaceId}
+            chatId={user.id}
             chatName={`${user.firstName} ${user.lastName}`}
           />
         ))

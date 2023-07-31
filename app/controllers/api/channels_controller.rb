@@ -1,14 +1,20 @@
 class Api::ChannelsController < ApplicationController
   wrap_parameters include: Channel.attribute_names
 
+  before_action :require_logged_in
+
   def create
     workspace_id = params[:workspace_id]
-    @channel = Channel.new({ **channel_params, workspace_id: workspace_id})
+    @channel = Channel.new({
+      **channel_params,
+      workspace_id: workspace_id,
+      owner_id: current_user.id
+    })
 
     if @channel.save
       render :show
     else
-      @errors = @user.errors
+      @errors = @channel.errors
       render 'api/errors/validation_errors', status: :unprocessable_entity
     end
   end

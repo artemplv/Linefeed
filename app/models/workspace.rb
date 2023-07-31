@@ -4,11 +4,13 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
-#  owner_id   :bigint           not null
+#  owner_id   :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class Workspace < ApplicationRecord
+  validates :name, presence: true
+
   belongs_to :owner,
     class_name: 'User'
 

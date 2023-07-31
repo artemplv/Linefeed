@@ -10,7 +10,9 @@
   justify-content: center;
   align-items: stretch;
   position: relative;
-  border-bottom: 1px solid $primary-darkest;
+  border-top: 1px solid rgb(82,38,83);
+  border-bottom: 1px solid rgb(82,38,83);
+  
 
   &.workspace-sidebar-placeholder-wrapper {
     background: rgb(82,38,83);

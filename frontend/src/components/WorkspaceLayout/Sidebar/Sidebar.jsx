@@ -7,6 +7,7 @@ import {
 } from 'constants/sidebar';
 
 import WorkspaceSection from './WorkspaceSection';
+import ChannelsSection from './ChannelsSection';
 import ChatsSection from './ChatsSection';
 
 function Sidebar(props) {
@@ -28,7 +29,9 @@ function Sidebar(props) {
       }
       {
         sections.includes(CHANNELS_SIDEBAR_SECTION) && (
-          <h4 style={{ paddingLeft: '1rem' }}>Channels</h4>
+          <ChannelsSection
+            workspaceId={workspaceId}
+          />
         )
       }
       {

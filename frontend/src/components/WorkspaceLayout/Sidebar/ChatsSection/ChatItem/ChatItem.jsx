@@ -1,21 +1,26 @@
 import React from 'react';
 
 import Avatar from 'components/shared/Avatar';
+import SidebarLink from 'components/WorkspaceLayout/Sidebar/SidebarLink';
 
 function ChatItem(props) {
   const {
+    workspaceId,
+    chatId,
     chatName,
   } = props;
 
   return (
-    <div className="flex-row align-center" style={{ padding: '0.5rem 0', gap: '0.5rem' }}>
+    <SidebarLink
+      to={`/workspaces/${workspaceId}/chats/${chatId}`}
+    >
       <Avatar
         size="xs"
       />
-      <p className="no-margin">
+      <span>
         {chatName}
-      </p>
-    </div>
+      </span>
+    </SidebarLink>
   );
 }
 

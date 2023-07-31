@@ -2,12 +2,12 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   useNavigate,
 } from 'react-router-dom';
 
-// import { updateWorkspace } from 'store/actions/workspaces';
+import { createWorkspaceChannel } from 'store/actions/channels';
 
 import Button from 'components/shared/Button';
 import TextInput from 'components/shared/TextInput';
@@ -17,7 +17,7 @@ function CreateChannel(props) {
     workspaceId,
   } = props;
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState('');
@@ -39,16 +39,16 @@ function CreateChannel(props) {
     return true;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!validateInput()) {
       return;
     }
 
-    // dispatch(updateWorkspace(workspaceId)({
-    //   name: inputValue,
-    // }));
+    await dispatch(createWorkspaceChannel(workspaceId)({
+      name: inputValue,
+    }));
     navigate(`/workspaces/${workspaceId}`);
   };
 
