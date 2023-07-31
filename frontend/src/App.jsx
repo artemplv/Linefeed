@@ -15,6 +15,7 @@ import SignupFormPage from 'components/SignupFormPage';
 import WorkspacesPage from 'components/WorkspacesPage';
 import WorkspaceLayout from 'components/WorkspaceLayout';
 import NewWorkspace from 'components/NewWorkspace';
+import Channel from 'components/Channel';
 
 import './App.scss';
 
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'channels/:channelId',
-            element: <h1>Hi from channel</h1>,
+            element: <Channel />,
           },
           {
             path: 'chats/:chatId',
