@@ -1,0 +1,51 @@
+@import 'assets/variables';
+
+.message-pane {
+  padding: 15px 10px 8px;
+  margin: 0 25px;
+  border: 1px solid $background-flat;
+  border-radius: 10px;
+  flex-grow: 0;
+  max-height: 250px;
+
+  &.focused {
+    border-color: $text-descriptive;
+  }
+
+  textarea {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin-bottom: 2px;
+    font-family: $regular-font-family;
+    outline: none;
+    resize: vertical;
+    min-height: 50px;
+  }
+
+  .bottom-toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .send-message-button {
+    font-size: 21px;
+    border: none;
+    background: #007b5a;
+    color: white;
+    padding: 7px 10px 7px 6px;
+    display: flex;
+    border-radius: 4px;
+    cursor: pointer;
+
+    svg {
+      transform: rotate(45deg);
+    }
+
+    &:disabled {
+      background: none;
+      color: #bbbabb;
+      cursor: default;
+    }
+  }
+}

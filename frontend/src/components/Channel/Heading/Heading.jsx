@@ -5,7 +5,7 @@ import Icon from 'components/shared/Icon';
 
 function Heading(props) {
   const {
-    name,
+    channel,
   } = props;
 
   return (
@@ -16,7 +16,7 @@ function Heading(props) {
           className="svg-baseline"
         />
         <span>
-          {name}
+          {channel.name}
         </span>
       </div>
     </div>
@@ -24,7 +24,9 @@ function Heading(props) {
 }
 
 Heading.propTypes = {
-  name: PropTypes.string.isRequired,
+  channel: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
 };
 
 export default Heading;

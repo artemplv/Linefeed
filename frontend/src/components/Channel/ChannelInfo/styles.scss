@@ -1,0 +1,31 @@
+@import 'assets/variables';
+
+.channel-main-info {
+  margin: 10px 20px;
+  
+  span {
+    display: block;
+  }
+
+  .heading {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .channel-description {
+    color: $text-descriptive;
+    margin-bottom: 0.5rem;
+  }
+
+  button.edit-channel-description {
+    width: auto;
+    color: $text-link;
+    padding: 0;
+    font-weight: 400;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
