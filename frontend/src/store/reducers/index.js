@@ -4,10 +4,12 @@ import {
 
 import sessionReducer from './session';
 import workspacesReducer from './workspaces';
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
-  session: sessionReducer,
+  users: usersReducer,
   workspaces: workspacesReducer,
+  session: sessionReducer,
 });
 
 export default rootReducer;
