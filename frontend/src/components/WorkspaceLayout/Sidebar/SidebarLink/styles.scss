@@ -12,15 +12,22 @@
   width: 100%;
   color: #c5b8c6;
   text-decoration: none;
+  border-radius: 6px;
 
   .svg-icon, .avatar {
     margin-right: 0.5rem;
   }
 
-  span {
+  .chat-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .self-user-hint {
+    color: $ghost-transparent;
+    margin-left: 0.8rem;
+    font-size: 0.85rem;
   }
 
   &:hover:not(.active) {
@@ -29,7 +36,6 @@
   }
 
   &.active {
-    border-radius: 6px;
     background: #1164A3;
     color: #fff;
   }
