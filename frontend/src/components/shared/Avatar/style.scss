@@ -5,4 +5,9 @@
   height: 75px;
   width: 75px;
   background-color: $background-flat;
+
+  &.avatar-xs {
+    width: 25px;
+    height: 25px;
+  }
 }

@@ -13,6 +13,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    @users
+    if params[:workspace_id]
+      workspace = Workspace.find(params[:workspace_id])
+      @users = workspace.users
+    end
+
+    render :index
+  end
+
   private
 
   def user_params

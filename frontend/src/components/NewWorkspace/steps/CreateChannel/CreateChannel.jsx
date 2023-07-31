@@ -1,6 +1,15 @@
 import React from 'react';
+import {
+  useNavigate,
+} from 'react-router-dom';
 
-function CreateChannel() {
+function CreateChannel(props) {
+  const {
+    workspaceId,
+  } = props;
+
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>What&apos;s your team working on right now?</h1>
@@ -12,7 +21,7 @@ function CreateChannel() {
       <button
         className="button primary"
         type="button"
-        onClick={() => {}}
+        onClick={() => { navigate(`/workspaces/${workspaceId}`); }}
         style={{ width: 120 }}
       >
         Next
