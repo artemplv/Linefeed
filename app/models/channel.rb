@@ -11,7 +11,7 @@
 #  updated_at   :datetime         not null
 #
 class Channel < ApplicationRecord
-  validates :name,, :workspace_id,
+  validates :name, :workspace_id,
     presence: true
 
   belongs_to :owner,
