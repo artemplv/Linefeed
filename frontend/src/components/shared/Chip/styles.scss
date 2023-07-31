@@ -1,0 +1,10 @@
+@import 'assets/variables';
+
+.chip {
+  padding: 0.5rem 1rem;
+  background-color: $background-flat;
+  border-radius: 15px;
+  width: fit-content;
+  font-size: 0.8rem;
+  color: $text-main;
+}

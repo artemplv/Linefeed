@@ -1,0 +1,25 @@
+@import 'assets/variables';
+
+.workspace-create-add-users {
+  .heading {
+    margin-bottom: 2rem;
+  }
+  
+  .add-user-button {
+    max-width: 100px;
+  }
+
+  .add-users-skip-button {
+    color: $text-main;
+  }
+
+  .users-to-add-list {
+    list-style: none;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}

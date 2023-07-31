@@ -97,6 +97,23 @@ form {
   width: auto;
 }
 
+.flex-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.align-start {
+  align-items: start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: end;
+}
+
 .hero {
   background-color: $background-primary;
   color: #fff;

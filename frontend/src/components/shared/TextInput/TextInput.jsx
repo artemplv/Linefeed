@@ -7,6 +7,7 @@ function TextInput(props) {
   const {
     value,
     name,
+    className,
     onChange,
     placeholder,
     type,
@@ -23,7 +24,7 @@ function TextInput(props) {
   };
 
   return (
-    <div className="input-text-wrapper">
+    <div className={`input-text-wrapper ${className}`}>
       <input
         name={name}
         className={`input-text ${error ? 'error' : ''}`}
@@ -54,6 +55,7 @@ TextInput.defaultProps = {
   error: null,
   name: '',
   onBlur: () => {},
+  className: '',
 };
 
 TextInput.propTypes = {
@@ -63,6 +65,7 @@ TextInput.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   error: PropTypes.string,
+  className: PropTypes.string,
   onBlur: PropTypes.func,
 };
 
