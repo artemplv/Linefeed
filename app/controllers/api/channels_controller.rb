@@ -1,3 +1,6 @@
+default_channel_description = 'This channel is for everything. Hold meetings, share docs, and make
+decisions together with your team.'
+
 class Api::ChannelsController < ApplicationController
   wrap_parameters include: Channel.attribute_names
 
@@ -11,10 +14,22 @@ class Api::ChannelsController < ApplicationController
       owner_id: current_user.id
     })
 
+    @channel.description ||= default_channel_description
+
     if @channel.save
       render :show
     else
       @errors = @channel.errors
+      render 'api/errors/validation_errors', status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @channel = Channel.find(params[:id])
+
+    if @channel.update(channel_params)
+      render :show
+    else
       render 'api/errors/validation_errors', status: :unprocessable_entity
     end
   end

@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { openModal } from 'store/actions/modal';
 
 import Button from 'components/shared/Button';
 
@@ -7,7 +10,14 @@ function ChannelInfo(props) {
     channel,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const onEditDescription = () => {
+    dispatch(openModal('edit-channel-description'));
+  };
+
   const channelName = channel.name || '';
+  const channelDescription = channel.description || 'No description';
 
   return (
     <div className="channel-main-info">
@@ -16,13 +26,13 @@ function ChannelInfo(props) {
       </span>
 
       <span className="channel-description">
-        {`This channel is for everything #${channelName}. Hold meetings, share docs, and make
-        decisions together with your team.`}
+        {channelDescription}
       </span>
 
       <Button
         variant="secondary"
         className="edit-channel-description"
+        onClick={onEditDescription}
       >
         Edit description
       </Button>

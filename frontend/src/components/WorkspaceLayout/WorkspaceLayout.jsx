@@ -12,6 +12,7 @@ import { getWorkspace } from 'store/actions/workspaces';
 
 import { DEFAULT_SIDEBAR_SECTIONS } from 'constants/sidebar';
 
+import Modal from 'components/Modal';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 
@@ -48,6 +49,8 @@ function WorkspaceLayout() {
           />
         </div>
       </div>
+
+      <Modal />
     </div>
   );
 }

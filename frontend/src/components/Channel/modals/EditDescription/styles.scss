@@ -1,0 +1,25 @@
+@import 'assets/variables';
+
+.edit-channel-description-modal-content {
+  .input-text-wrapper {
+    margin-bottom: 2px;
+  }
+
+  textarea.input-text {
+    padding: 10px;
+    font-family: $regular-font-family;
+    resize: none;
+    width: 450px;
+    height: 120px;
+  }
+
+  .modal-description {
+    color: $text-descriptive;
+    font-size: 0.8rem;
+  }
+
+  button {
+    max-width: 100px;
+    margin-bottom: 0;
+  }
+}
