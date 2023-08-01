@@ -45,7 +45,7 @@ class Api::ChannelsController < ApplicationController
     @channels
 
     workspace = Workspace.find(params[:workspace_id])
-    @channels = workspace.channels
+    @channels = workspace.channels.includes(:messages)
     
     render :index
   end

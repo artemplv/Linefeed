@@ -37,6 +37,11 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     dependent: :nullify
 
+  has_many :messages,
+    class_name: 'Message',
+    foreign_key: :author_id,
+    dependent: :destroy
+
   has_one_attached :profile_picture
 
   def self.find_by_credentials(email, password)

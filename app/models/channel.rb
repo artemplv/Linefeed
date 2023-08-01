@@ -19,4 +19,9 @@ class Channel < ApplicationRecord
 
   belongs_to :workspace,
     class_name: 'Workspace'
+
+  has_many :channel_messages,
+    dependent: :destroy
+  has_many :messages,
+    through: :channel_messages
 end

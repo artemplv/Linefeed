@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :workspaces, only: [:index, :show, :update, :create] do
       resources :users, only: [:index]
       resources :channels, only: [:index, :create]
+      resources :messages, only: [:index, :create]
     end
     resources :channels, only: [:update, :destroy]
   end
