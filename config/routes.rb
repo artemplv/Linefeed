@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :create]
     end
     resources :channels, only: [:update, :destroy]
+    resources :messages, only: [:destroy]
   end
 
   get '*path', to: "static_pages#frontend_index"

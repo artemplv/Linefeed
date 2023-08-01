@@ -2,12 +2,31 @@
 
 .message-wrapper {
   display: flex;
-  gap: 15px;
+  justify-content: space-between;
   margin: 5px 0;
   padding: 10px 30px;
 
+  .main-section {
+    display: flex;
+    gap: 15px;  
+  }
+
+  .delete-button {
+    display: none;
+    align-self: center;
+    font-size: 1.3rem;
+    color: $text-error;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   &:hover {
     background: rgba(221, 221, 221, 0.3);
+
+    .delete-button {
+      display: block;
+    }
   }
 
   p {

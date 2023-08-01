@@ -10,3 +10,9 @@ export const createMessage = (workspaceId, channelId) => async (payload = {}) =>
   const body = await response.json();
   return body;
 };
+
+export const deleteMessage = async (messageId) => {
+  await csrfFetch(`/api/messages/${messageId}`, {
+    method: 'DELETE',
+  });
+};

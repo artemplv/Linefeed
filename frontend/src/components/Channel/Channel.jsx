@@ -17,6 +17,7 @@ import {
 import {
   getMessages,
   setMessage,
+  removeMessage,
 } from 'store/actions/messages';
 
 import MessagePane from 'components/shared/MessagePane';
@@ -39,9 +40,19 @@ function Channel() {
     const subscription = wsConsumer.subscriptions.create(
       { channel: 'ChannelsChannel', id: channelId },
       {
-        received: (data) => {
-          dispatch(setMessage(data.message));
-          setMessageIds((ids) => [...ids, data.message.id]);
+        received: ({ type, message, id }) => {
+          switch (type) {
+            case 'RECEIVE_MESSAGE':
+              dispatch(setMessage(message));
+              setMessageIds((ids) => [...ids, message.id]);
+              break;
+            case 'DESTROY_MESSAGE':
+              dispatch(removeMessage(id));
+              setMessageIds((ids) => ids.filter((messageId) => messageId !== id));
+              break;
+            default:
+              break;
+          }
         },
       },
     );

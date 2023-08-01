@@ -3,6 +3,16 @@ class Api::MessagesController < ApplicationController
 
   before_action :require_logged_in
 
+  def index
+    if params[:channel_id]
+      @channel = Channel.find(params[:channel_id])
+      
+      @messages = @channel.messages
+    end
+    
+    render :index
+  end
+
   def create
     workspace_id = params[:workspace_id]
     @message = Message.new({
@@ -22,20 +32,27 @@ class Api::MessagesController < ApplicationController
 
     if params[:channel_id]
       ChannelsChannel.broadcast_to @message.channel,
-        from_template('api/messages/show', message: @message)
+        type: 'RECEIVE_MESSAGE',
+        **from_template('api/messages/show', message: @message)
     end
 
     render json: nil, status: :ok
   end
 
-  def index
-    if params[:channel_id]
-      @channel = Channel.find(params[:channel_id])
+  def destroy
+    @message = Message.find(params[:id])
+
+    if @message
+      ChannelsChannel.broadcast_to @message.channel,
+        type: 'DESTROY_MESSAGE',
+        id: @message.id
       
-      @messages = @channel.messages
+      @message.destroy
+      
+      render json: nil, status: :ok
+    else
+      render json: nil, status: :not_found
     end
-    
-    render :index
   end
 
   private
