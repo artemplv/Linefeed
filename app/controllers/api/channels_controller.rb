@@ -1,6 +1,3 @@
-default_channel_description = 'This channel is for everything. Hold meetings, share docs, and make
-decisions together with your team.'
-
 class Api::ChannelsController < ApplicationController
   wrap_parameters include: Channel.attribute_names
 
@@ -14,7 +11,7 @@ class Api::ChannelsController < ApplicationController
       owner_id: current_user.id
     })
 
-    @channel.description ||= default_channel_description
+    @channel.description ||= get_default_description
 
     if @channel.save
       render :show
@@ -57,5 +54,9 @@ class Api::ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:name, :description)
+  end
+
+  def get_default_description
+    'This channel is for everything. Hold meetings, share docs, and make decisions together with your team.'
   end
 end

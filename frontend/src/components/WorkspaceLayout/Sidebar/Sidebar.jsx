@@ -31,6 +31,7 @@ function Sidebar(props) {
         sections.includes(CHANNELS_SIDEBAR_SECTION) && (
           <ChannelsSection
             workspaceId={workspaceId}
+            full={!creationView}
           />
         )
       }

@@ -66,6 +66,12 @@
     box-shadow: inset 0 0 0 1px $success;
   }
 
+  &.error {
+    color: #fff;
+    background-color: $text-error;
+    box-shadow: inset 0 0 0 1px $text-error;
+  }
+
   &:hover {
     background-color: $primary-dark;
 
@@ -99,6 +105,12 @@
       color: #fff;
       background-color: $success-dark;
       box-shadow: inset 0 0 0 2px $success-dark;
+    }
+
+    &.error {
+      color: #fff;
+      background-color: $text-error-dark;
+      box-shadow: inset 0 0 0 2px $text-error-dark;
     }
   }
 

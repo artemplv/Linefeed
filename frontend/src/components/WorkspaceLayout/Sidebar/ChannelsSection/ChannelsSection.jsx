@@ -5,19 +5,23 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getWorkspaceChannels } from 'store/actions/channels';
+import { openModal } from 'store/actions/modal';
 
+import Button from 'components/shared/Button';
 import ChannelItem from './ChannelItem';
 
 function ChannelsSection(props) {
   const {
     workspaceId,
+    full,
   } = props;
 
   const dispatch = useDispatch();
 
-  const channels = useSelector((state) => Object.values(state.channels.byId));
+  const channels = useSelector((state) => Object.values(state.channels.byId || {}));
 
   useEffect(() => {
     if (workspaceId) {
@@ -26,7 +30,7 @@ function ChannelsSection(props) {
   }, [workspaceId]);
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div className="channels-sidebar-section">
       <h4>Channels</h4>
       {
         channels.map((channel) => (
@@ -38,8 +42,27 @@ function ChannelsSection(props) {
           />
         ))
       }
+      {
+        full && (
+          <Button
+            className="new-channel-button"
+            onClick={() => dispatch(openModal('create-channel'))}
+          >
+            + New channel
+          </Button>
+        )
+      }
     </div>
   );
 }
+
+ChannelsSection.defaultProps = {
+  full: true,
+};
+
+ChannelsSection.propTypes = {
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  full: PropTypes.bool,
+};
 
 export default ChannelsSection;

@@ -1,0 +1,15 @@
+@import 'assets/variables';
+
+.create-channel-modal-content {
+  min-width: 500px;
+
+  .modal-description {
+    color: $text-descriptive;
+    font-size: 0.8rem;
+  }
+
+  button {
+    max-width: 100px;
+    margin-bottom: 0;
+  }
+}

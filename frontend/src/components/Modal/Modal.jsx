@@ -10,6 +10,7 @@ import { closeModal } from 'store/actions/modal';
 
 import EditChannelDescription from 'components/Channel/modals/EditDescription';
 import DeleteChannel from 'components/Channel/modals/DeleteChannel';
+import CreateChannel from 'components/Channel/modals/CreateChannel';
 
 function Modal() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function Modal() {
       break;
     case 'delete-channel':
       component = <DeleteChannel />;
+      break;
+    case 'create-channel':
+      component = <CreateChannel />;
       break;
     default:
       return null;

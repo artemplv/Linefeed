@@ -49,7 +49,7 @@ function DeleteChannel() {
           Cancel
         </Button>
         <Button
-          variant="success"
+          variant="error"
           onClick={handleSubmit}
         >
           Delete
