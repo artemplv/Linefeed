@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 import {
   useParams,
 } from 'react-router-dom';
@@ -28,12 +31,17 @@ function Channel() {
 
   const dispatch = useDispatch();
 
+  const channel = useSelector((state) => state.channels.byId[channelId] || {});
+
+  const [messageIds, setMessageIds] = useState([]);
+
   useEffect(() => {
     const subscription = wsConsumer.subscriptions.create(
       { channel: 'ChannelsChannel', id: channelId },
       {
         received: (data) => {
           dispatch(setMessage(data.message));
+          setMessageIds((ids) => [...ids, data.message.id]);
         },
       },
     );
@@ -47,11 +55,20 @@ function Channel() {
     channelId,
   ]);
 
+  useEffect(() => {
+    if (channel.id) {
+      setMessageIds(channel.messages);
+    } else {
+      setMessageIds([]);
+    }
+  }, [
+    channel.id,
+  ]);
+
   const handleSend = (text) => {
     messages.createMessage(workspaceId, channelId)({ body: text });
   };
 
-  const channel = useSelector((state) => state.channels.byId[channelId] || {});
   const channelName = channel.name || '';
 
   return (
@@ -59,7 +76,10 @@ function Channel() {
       <div className="channel-page-content">
         <Heading channel={channel} />
 
-        <MessagesContainer channel={channel} />
+        <MessagesContainer
+          channel={channel}
+          messageIds={messageIds || []}
+        />
 
         <MessagePane
           placeholder={`Message #${channelName}`}
