@@ -36,6 +36,11 @@ class User < ApplicationRecord
     class_name: 'Workspace',
     foreign_key: :owner_id,
     dependent: :nullify
+  
+  has_many :own_channels,
+    class_name: 'Channel',
+    foreign_key: :owner_id,
+    dependent: :nullify
 
   has_many :messages,
     class_name: 'Message',

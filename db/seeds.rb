@@ -4,6 +4,9 @@ ApplicationRecord.transaction do
   User.destroy_all
   Workspace.destroy_all
   WorkspaceUser.destroy_all
+  Channel.destroy_all
+  ChannelMessage.destroy_all
+  Message.destroy_all
 
   puts "Resetting primary keys..."
 
