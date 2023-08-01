@@ -1,6 +1,8 @@
+/* eslint-disable no-case-declarations */
 import {
   SET_CHANNEL,
   SET_CHANNELS,
+  REMOVE_CHANNEL,
 } from 'store/actionTypes/channels';
 
 const initialState = {
@@ -23,6 +25,14 @@ const channelsReducer = (state = initialState, action) => {
         ...state,
         byId: action.payload,
       };
+    case REMOVE_CHANNEL:
+      const newState = {
+        ...state,
+        byId: { ...state.byId },
+      };
+
+      delete newState.byId[action.payload];
+      return newState;
     default:
       return state;
   }

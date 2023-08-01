@@ -34,6 +34,16 @@ class Api::ChannelsController < ApplicationController
     end
   end
 
+  def destroy
+    @channel = Channel.find(params[:id])
+
+    if @channel.destroy
+      render json: { message: 'success' }
+    else
+      render 'api/errors/validation_errors', status: :unprocessable_entity
+    end
+  end
+
   def index
     @channels
 

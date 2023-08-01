@@ -25,8 +25,21 @@
     color: $text-link;
     padding: 0;
     font-weight: 400;
+    margin-right: 1.5rem;
 
     &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  button.delete-channel {
+    width: auto;
+    color: $text-descriptive;
+    padding: 0;
+    font-weight: 400;
+
+    &:hover {
+      color: $text-error;
       text-decoration: underline;
     }
   }

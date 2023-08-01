@@ -16,6 +16,10 @@ function ChannelInfo(props) {
     dispatch(openModal('edit-channel-description'));
   };
 
+  const onDelete = () => {
+    dispatch(openModal('delete-channel'));
+  };
+
   const channelName = channel.name || '';
   const channelDescription = channel.description || 'No description';
 
@@ -35,6 +39,13 @@ function ChannelInfo(props) {
         onClick={onEditDescription}
       >
         Edit description
+      </Button>
+      <Button
+        variant="secondary"
+        className="delete-channel"
+        onClick={onDelete}
+      >
+        Delete channel
       </Button>
     </div>
   );

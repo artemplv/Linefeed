@@ -9,6 +9,7 @@ import {
 import { closeModal } from 'store/actions/modal';
 
 import EditChannelDescription from 'components/Channel/modals/EditDescription';
+import DeleteChannel from 'components/Channel/modals/DeleteChannel';
 
 function Modal() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function Modal() {
   switch (modalName) {
     case 'edit-channel-description':
       component = <EditChannelDescription />;
+      break;
+    case 'delete-channel':
+      component = <DeleteChannel />;
       break;
     default:
       return null;

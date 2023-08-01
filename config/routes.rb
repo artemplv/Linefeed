@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index]
       resources :channels, only: [:index, :create]
     end
-    resources :channels, only: [:update]
+    resources :channels, only: [:update, :destroy]
   end
 
   get '*path', to: "static_pages#frontend_index"
