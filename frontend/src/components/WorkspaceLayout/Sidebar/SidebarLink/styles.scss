@@ -5,7 +5,6 @@
   line-height: 30px;
   padding: 0 10px 0 16px;
   align-items: center;
-  border-radius: 0;
   cursor: pointer;
   display: flex;
   user-select: none;
@@ -36,7 +35,7 @@
   }
 
   &.active {
-    background: #1164A3;
+    background: $background-active;
     color: #fff;
   }
 }

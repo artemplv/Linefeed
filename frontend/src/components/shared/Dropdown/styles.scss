@@ -1,0 +1,58 @@
+@import 'assets/variables';
+
+.dropdown {
+  position: relative;
+
+  .trigger-button {
+    display: flex;
+    background: none;
+    color: inherit;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+
+    .svg-icon {
+      margin-left: 5px;
+    }
+    
+    &:hover {
+      background: $background-hover;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 2.2rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: $background-empty;
+    padding: 0.5rem 0;
+    min-width: 150px;
+    border-radius: 6px;
+  }
+}
+
+.dropdown-menu-link, .dropdown-menu-button {
+  font-size: 0.8rem;
+  font-weight: normal;
+  text-decoration: none;
+  width: 100%;
+  color: $default;
+  line-height: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 5px 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: $background-active;
+    color: #fff;
+  }
+}

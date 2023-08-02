@@ -7,10 +7,11 @@ function MessagesContainer(props) {
   const {
     channel,
     messageIds,
+    msgContainerRef,
   } = props;
 
   return (
-    <div className="messages-container">
+    <div className="messages-container" ref={msgContainerRef}>
       {
         messageIds.toReversed().map((messageId) => (
           <Message

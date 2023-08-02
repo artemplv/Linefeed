@@ -1,6 +1,7 @@
 import React, {
   useEffect,
   useState,
+  useRef,
 } from 'react';
 import {
   useParams,
@@ -31,8 +32,10 @@ function Channel() {
   } = useParams();
 
   const dispatch = useDispatch();
+  const msgContainerRef = useRef(null);
 
-  const channel = useSelector((state) => state.channels.byId[channelId] || {});
+  let channel = useSelector((state) => state.channels.byId[channelId]);
+  channel = channel || {};
 
   const [messageIds, setMessageIds] = useState([]);
 
@@ -76,6 +79,10 @@ function Channel() {
     channel.id,
   ]);
 
+  // useEffect(() => {
+  //   msgContainerRef.current.scrollTo({ top: 0 });
+  // });
+
   const handleSend = (text) => {
     messages.createMessage(workspaceId, channelId)({ body: text });
   };
@@ -90,6 +97,7 @@ function Channel() {
         <MessagesContainer
           channel={channel}
           messageIds={messageIds || []}
+          msgContainerRef={msgContainerRef}
         />
 
         <MessagePane

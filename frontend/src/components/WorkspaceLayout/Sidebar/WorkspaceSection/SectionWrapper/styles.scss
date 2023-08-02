@@ -20,7 +20,13 @@
 
   h4 {
     margin: 0;
-    padding: 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .dropdown .trigger-button {
+    margin-left: 1rem;
   }
 }
 
