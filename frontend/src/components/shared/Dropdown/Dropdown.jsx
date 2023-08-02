@@ -8,6 +8,7 @@ function Dropdown(props) {
     toggle,
     triggerElement,
     children,
+    menuStickTo,
   } = props;
 
   return (
@@ -26,7 +27,7 @@ function Dropdown(props) {
         </button>
         {
           open && (
-            <div className="dropdown-menu">
+            <div className={`dropdown-menu stick-${menuStickTo}`}>
               {children}
             </div>
           )
@@ -35,5 +36,9 @@ function Dropdown(props) {
     </div>
   );
 }
+
+Dropdown.defaultProps = {
+  menuStickTo: 'left',
+};
 
 export default Dropdown;
