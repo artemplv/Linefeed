@@ -2,8 +2,6 @@ import React from 'react';
 
 import { PERSONAL_LINKS_LIST } from 'constants';
 
-import User from './User';
-
 function TopNav() {
   return (
     <div role="toolbar" className="workspace-top-nav">
@@ -24,9 +22,8 @@ function TopNav() {
             ))
           }
         </ul>
-      </nav>
 
-      <User />
+      </nav>
     </div>
   );
 }
