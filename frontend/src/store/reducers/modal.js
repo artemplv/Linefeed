@@ -3,12 +3,20 @@ import {
   CLOSE_MODAL,
 } from 'store/actionTypes/modal';
 
-const modalReducer = (state = null, action) => {
+const defaultState = {
+  name: null,
+  data: null,
+};
+
+const modalReducer = (state = defaultState, action) => {
   switch (action.type) {
     case OPEN_MODAL:
-      return action.payload;
+      return {
+        name: action.payload.name,
+        data: action.payload.data,
+      };
     case CLOSE_MODAL:
-      return null;
+      return defaultState;
     default:
       return state;
   }

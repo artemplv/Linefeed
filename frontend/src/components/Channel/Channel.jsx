@@ -83,8 +83,9 @@ function Channel() {
   //   msgContainerRef.current.scrollTo({ top: 0 });
   // });
 
-  const handleSend = (text) => {
-    messages.createMessage(workspaceId, channelId)({ body: text });
+  const handleSend = async (text) => {
+    await messages.createMessage(workspaceId, channelId)({ body: text });
+    msgContainerRef.current.scrollTo({ top: 0 });
   };
 
   const channelName = channel.name || '';

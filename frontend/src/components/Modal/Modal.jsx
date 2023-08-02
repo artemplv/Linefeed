@@ -11,10 +11,11 @@ import { closeModal } from 'store/actions/modal';
 import EditChannelDescription from 'components/Channel/modals/EditDescription';
 import DeleteChannel from 'components/Channel/modals/DeleteChannel';
 import CreateChannel from 'components/Channel/modals/CreateChannel';
+import DeleteMessage from 'components/modals/DeleteMessage';
 
 function Modal() {
   const dispatch = useDispatch();
-  const modalName = useSelector((state) => state.ui.modal);
+  const modalName = useSelector((state) => state.ui.modal.name);
 
   const handleClose = () => {
     dispatch(closeModal());
@@ -34,6 +35,9 @@ function Modal() {
       break;
     case 'create-channel':
       component = <CreateChannel />;
+      break;
+    case 'delete-message':
+      component = <DeleteMessage />;
       break;
     default:
       return null;

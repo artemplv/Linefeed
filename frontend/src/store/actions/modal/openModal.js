@@ -2,9 +2,12 @@ import {
   OPEN_MODAL,
 } from 'store/actionTypes/modal';
 
-const openModal = (modal) => ({
+const openModal = (modalName, modalData = null) => ({
   type: OPEN_MODAL,
-  payload: modal,
+  payload: {
+    name: modalName,
+    data: modalData,
+  },
 });
 
 export default openModal;

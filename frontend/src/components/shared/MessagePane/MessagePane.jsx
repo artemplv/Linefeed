@@ -12,7 +12,6 @@ function MessagePane(props) {
   } = props;
 
   const [inputValue, setInputValue] = useState('');
-  const [focused, setFocused] = useState(false);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -27,26 +26,30 @@ function MessagePane(props) {
     setInputValue('');
   };
 
+  const handleEnter = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      handleSend();
+      event.preventDefault();
+    }
+  };
+
   return (
-    <div className={`message-pane ${focused ? 'focused' : ''}`}>
+    <div className="message-pane">
       <textarea
         value={inputValue}
         onChange={handleChange}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
         placeholder={placeholder}
+        onKeyDown={handleEnter}
       />
 
-      <div className="bottom-toolbar">
-        <button
-          type="button"
-          className="send-message-button"
-          disabled={!inputValue}
-          onClick={handleSend}
-        >
-          <Icon name="send" />
-        </button>
-      </div>
+      <button
+        type="button"
+        className="send-message-button"
+        disabled={!inputValue}
+        onClick={handleSend}
+      >
+        <Icon name="send" />
+      </button>
     </div>
   );
 }

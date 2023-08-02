@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  useDispatch,
   useSelector,
 } from 'react-redux';
 
 import { formatDateTime } from 'utils';
-import { messages } from 'api';
+import { openModal } from 'store/actions/modal';
 
 import Avatar from 'components/shared/Avatar';
 
@@ -14,8 +15,10 @@ function Message(props) {
     messageId,
   } = props;
 
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
-    messages.deleteMessage(messageId);
+    dispatch(openModal('delete-message', { messageId }));
   };
 
   const message = useSelector((state) => state.messages.byId[messageId]);
