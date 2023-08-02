@@ -5,10 +5,16 @@
   height: 75px;
   width: 75px;
   background-color: $background-flat;
+  flex-shrink: 0;
 
   &.avatar-xs {
     width: 23px;
     height: 23px;
+  }
+
+  &.avatar-s {
+    width: 30px;
+    height: 30px;
   }
 
   &.avatar-m {

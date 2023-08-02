@@ -7,8 +7,8 @@
   position: relative;
   height: 100vh;
 
-  grid-template-columns: 220px auto;
-  grid-template-rows: 44px auto;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 55px auto;
   grid-template-areas:
     'workspace-top-nav workspace-top-nav'
     'workspace-sidebar workspace-primary-view';
@@ -20,7 +20,7 @@
   grid-template-areas: 'workspace-primary-view-contents';
   grid-template-rows: auto;
   grid-template-columns: auto;
-  max-height: calc(100vh - 44px);
+  max-height: calc(100vh - 55px);
 }
 
 .workspace-primary-view-contents {

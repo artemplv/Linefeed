@@ -1,9 +1,13 @@
 .workspace-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+
   .nav-list {
     height: 100%;
     display: flex;
     align-items: center;
-    margin-left: 1rem;
   
     ul {
       list-style: none;

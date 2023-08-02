@@ -26,15 +26,27 @@
 
   .dropdown-menu {
     position: absolute;
-    top: 2.2rem;
-    left: 1rem;
+    top: 40px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     background: $background-empty;
     padding: 0.5rem 0;
-    min-width: 150px;
     border-radius: 6px;
+    max-height: calc(100vh - 62px);
+    max-width: 500px;
+    min-width: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px 0 #0000001f;
+    border: 1px solid $ghost-light;
+
+    &.stick-left {
+      left: 1rem;
+    }
+
+    &.stick-right {
+      right: 1rem;
+    }
   }
 }
 
