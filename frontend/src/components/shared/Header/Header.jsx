@@ -4,21 +4,10 @@ import { useSelector } from 'react-redux';
 
 import logo from 'assets/images/slack-logo-full-light.svg';
 
+import { PERSONAL_LINKS_LIST } from 'constants';
+
 import LogoutButton from 'components/LogoutButton';
 import CreateWorkspaceButton from 'components/shared/CreateWorkspaceButton';
-
-const linksList = [
-  {
-    id: 'github',
-    url: 'https://github.com/artemplv/slack-clone',
-    text: 'GitHub',
-  },
-  {
-    id: 'linkedin',
-    url: 'https://linkedin.com/in/artemplv/',
-    text: 'LinkedIn',
-  },
-];
 
 function Header() {
   const isAuth = useSelector((state) => !!state.session.user);
@@ -36,15 +25,16 @@ function Header() {
           <nav className="nav-list">
             <ul>
               {
-                linksList.map((item) => (
+                PERSONAL_LINKS_LIST.map((item) => (
                   <li key={item.id}>
-                    <Link
+                    <a
                       className="link light"
-                      to={{ pathname: item.url }}
+                      href={item.url}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       {item.text}
-                    </Link>
+                    </a>
                   </li>
                 ))
               }
