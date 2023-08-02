@@ -16,7 +16,7 @@ function WorkspacesList() {
   }, []);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const workspaces = useSelector((state) => Object.values(state.workspaces.byId));
+  const workspaces = useSelector((state) => Object.values(state.workspaces.byId || {}));
 
   return (
     <div className="workspaces-list">

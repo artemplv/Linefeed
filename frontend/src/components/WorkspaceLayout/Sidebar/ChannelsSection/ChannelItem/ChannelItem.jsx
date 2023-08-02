@@ -16,7 +16,7 @@ function ChannelItem(props) {
     >
       <Icon name="hash" />
 
-      <span>{name}</span>
+      <span className="channel-name">{name}</span>
     </SidebarLink>
   );
 }
