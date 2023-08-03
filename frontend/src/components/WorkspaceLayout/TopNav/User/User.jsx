@@ -18,6 +18,7 @@ function User() {
 
   const user = useSelector((state) => state.session.user);
   const userName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim();
+  const userPic = user?.pictureUrl;
 
   const toggleDropdown = () => {
     setDropdownOpen((value) => !value);
@@ -32,11 +33,13 @@ function User() {
       <Dropdown
         open={dropdownOpen}
         toggle={toggleDropdown}
-        triggerElement={<Avatar size="s" />}
+        triggerElement={<Avatar src={userPic} size="s" />}
         menuStickTo="right"
       >
         <div className="dropdown-menu-user-data flex-row">
-          <Avatar />
+          <Avatar
+            src={userPic}
+          />
           <div>
             <p>
               <b>{userName}</b>

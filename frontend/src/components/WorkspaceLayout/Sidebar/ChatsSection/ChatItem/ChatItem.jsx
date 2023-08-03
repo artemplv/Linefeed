@@ -14,11 +14,14 @@ function ChatItem(props) {
   const sessionUserId = useSelector((state) => state.session.user?.id);
   const isSelf = Number(chatId) === sessionUserId;
 
+  const chatPic = useSelector((state) => state.users.byId[chatId]?.pictureUrl);
+
   return (
     <SidebarLink
       to={`/workspaces/${workspaceId}/chats/${chatId}`}
     >
       <Avatar
+        src={chatPic}
         size="xs"
       />
       <span className="chat-name">

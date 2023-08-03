@@ -1,4 +1,6 @@
-ApplicationRecord.transaction do 
+require "open-uri"
+
+# ApplicationRecord.transaction do
   puts "Destroying tables..."
   
   User.destroy_all
@@ -15,11 +17,15 @@ ApplicationRecord.transaction do
 
   puts "Creating users..."
   
-  User.create!(
+  default_user = User.create!(
     first_name: 'John',
     last_name: 'Doe',
     email: 'johndoe@example.com', 
     password: 'password'
+  )
+  default_user.profile_picture.attach(
+    io: URI.open('https://slack-clone-artemplv-seed.s3.amazonaws.com/profile_logo_.jpg'),
+    filename: 'default-user-avatar.jpg'
   )
 
   9.times do
@@ -55,4 +61,4 @@ ApplicationRecord.transaction do
   });
 
   puts "Done!"
-end
+# end

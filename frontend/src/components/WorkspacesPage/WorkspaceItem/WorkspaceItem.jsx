@@ -17,6 +17,7 @@ function WorkspaceItem(props) {
       <div className="workspaces-list-item-details">
         <Avatar
           className="workspace-avatar"
+          src={workspace?.pictureUrl}
         />
 
         <div className="workspace-detail-content">

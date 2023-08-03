@@ -30,7 +30,10 @@ function Message(props) {
   return (
     <div className="message-wrapper">
       <div className="main-section">
-        <Avatar size="m" />
+        <Avatar
+          src={user?.pictureUrl}
+          size="m"
+        />
 
         <div>
           <p className="name-time">

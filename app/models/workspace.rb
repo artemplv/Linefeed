@@ -21,4 +21,6 @@ class Workspace < ApplicationRecord
 
   has_many :channels,
     dependent: :destroy
+
+  has_one_attached :picture
   end

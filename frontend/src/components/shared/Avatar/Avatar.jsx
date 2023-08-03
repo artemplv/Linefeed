@@ -8,23 +8,27 @@ function Avatar(props) {
     className,
   } = props;
 
+  if (!src) {
+    return <div className={`avatar avatar-${size} ${className}`} />;
+  }
+
   return (
-    <div className={`avatar avatar-${size} ${className}`} />
-    // <img
-    //   src={src}
-    //   className={`avatar avatar-${size} ${className}`}
-    //   alt="avatar"
-    // />
+    <img
+      src={src}
+      className={`avatar avatar-${size} ${className}`}
+      alt="avatar"
+    />
   );
 }
 
 Avatar.defaultProps = {
+  src: null,
   size: 'm',
   className: '',
 };
 
 Avatar.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l']),
   className: PropTypes.string,
 };
