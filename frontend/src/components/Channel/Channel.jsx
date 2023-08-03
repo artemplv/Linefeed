@@ -39,6 +39,10 @@ function Channel() {
 
   const [messageIds, setMessageIds] = useState([]);
 
+  const scrollToBottom = () => {
+    msgContainerRef.current.scrollTo(0, msgContainerRef.current.scrollHeight);
+  };
+
   useEffect(() => {
     const subscription = wsConsumer.subscriptions.create(
       { channel: 'ChannelsChannel', id: channelId },
@@ -60,7 +64,12 @@ function Channel() {
       },
     );
 
-    dispatch(getMessages(workspaceId, channelId));
+    const fetchMessages = async () => {
+      await dispatch(getMessages(workspaceId, channelId));
+      scrollToBottom();
+    };
+
+    fetchMessages();
 
     return () => {
       subscription?.unsubscribe();
@@ -85,7 +94,7 @@ function Channel() {
 
   const handleSend = async (text) => {
     await messages.createMessage(workspaceId, channelId)({ body: text });
-    msgContainerRef.current.scrollTo({ top: 0 });
+    scrollToBottom();
   };
 
   const channelName = channel.name || '';

@@ -12,18 +12,18 @@ function MessagesContainer(props) {
 
   return (
     <div className="messages-container" ref={msgContainerRef}>
+      <ChannelInfo
+        channel={channel}
+      />
+
       {
-        messageIds.toReversed().map((messageId) => (
+        messageIds.map((messageId) => (
           <Message
             key={messageId}
             messageId={messageId}
           />
         ))
       }
-
-      <ChannelInfo
-        channel={channel}
-      />
     </div>
   );
 }
