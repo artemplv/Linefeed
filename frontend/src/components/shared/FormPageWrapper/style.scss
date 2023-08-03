@@ -14,7 +14,8 @@
     width: 100%;
 
     .center-col {
-      text-align: center;
+      display: flex;
+      justify-content: center;
     }
 
     .right-col {

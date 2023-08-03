@@ -4,7 +4,7 @@ import {
   Link,
 } from 'react-router-dom';
 
-import logo from 'assets/images/slack-logo-full.svg';
+import LogoLink from 'components/shared/LogoLink';
 
 function FormPageWrapper(props) {
   const {
@@ -19,9 +19,10 @@ function FormPageWrapper(props) {
         <div className="left-col" />
 
         <div className="center-col">
-          <Link to="/">
-            <img src={logo} height={26} alt="logo" />
-          </Link>
+          <LogoLink
+            size="s"
+            variant="dark"
+          />
         </div>
 
         <div className="right-col">

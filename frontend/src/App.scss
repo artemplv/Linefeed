@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&family=Ubuntu:wght@500&display=swap');
 @import 'assets/variables';
 
 *, ::after, ::before {
@@ -54,6 +54,10 @@ a.link {
 
 form {
   width: 100%;
+}
+
+h4 {
+  font-weight: 500;
 }
 
 .bold {

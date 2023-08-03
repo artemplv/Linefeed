@@ -1,0 +1,53 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &.logo-light {
+    color: #fff;
+  }
+
+  &.logo-dark {
+    color: #1d1c1d;
+  }
+
+  &.logo-xs {
+    font-size: 14px;
+
+    img {
+      width: 10px;
+    }
+  }
+
+  &.logo-s {
+    font-size: 24px;
+
+    img {
+      width: 16px;
+    }
+  }
+
+  &.logo-m {
+    font-size: 28px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  a {
+    font-family: 'Ubuntu', 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: inherit;
+  }
+
+  img {
+    margin-right: 5px;
+  }
+}

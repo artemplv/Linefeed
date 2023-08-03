@@ -2,11 +2,16 @@ import React from 'react';
 
 import { PERSONAL_LINKS_LIST } from 'constants';
 
+import LogoLink from 'components/shared/LogoLink';
 import User from './User';
 
 function TopNav() {
   return (
     <div role="toolbar" className="workspace-top-nav">
+      <LogoLink
+        size="xs"
+      />
+
       <nav className="nav-list">
         <ul>
           {
