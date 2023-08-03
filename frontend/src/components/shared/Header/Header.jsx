@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -9,12 +10,16 @@ import { PERSONAL_LINKS_LIST } from 'constants';
 import LogoutButton from 'components/LogoutButton';
 import CreateWorkspaceButton from 'components/shared/CreateWorkspaceButton';
 
-function Header() {
+function Header(props) {
+  const {
+    variant,
+  } = props;
+
   const isAuth = useSelector((state) => !!state.session.user);
 
   return (
-    <header>
-      <nav className="main-nav">
+    <header className="main-header">
+      <nav className={`main-nav main-nav-${variant}`}>
         <div className="main-nav-content-container">
           <div className="logo-container">
             <Link to="/">
@@ -71,5 +76,13 @@ function Header() {
     </header>
   );
 }
+
+Header.defaultProps = {
+  variant: 'default',
+};
+
+Header.propTypes = {
+  variant: PropTypes.oneOf(['default', 'dark']),
+};
 
 export default Header;

@@ -10,7 +10,7 @@ import CreateWorkspaceBanner from './CreateWorkspaceBanner';
 function WorkspacesPage() {
   return (
     <>
-      <Header />
+      <Header variant="dark" />
 
       <main className="workspaces-page-main">
         <section className="hero hero-dark workspaces-hero">

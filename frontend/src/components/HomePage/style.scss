@@ -4,7 +4,66 @@
   display: block;
 
   .main-hero {
+    overflow-x: hidden;
     // temporary
     height: 100vh;
+    padding-bottom: 3rem;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    padding: 0 4vw;
+    display: grid;
+    grid-template-columns: 53% 45%;
+    grid-column-gap: 2%;
+    justify-items: start;
+    align-items: center;
+
+    @media screen and (max-width: 720px) {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  .hero-illustration {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    order: 2;
+
+    video {
+      height: auto;
+      max-width: 700px;
+      max-height: 400px;
+    }
+  }
+
+  .hero-header {
+    width: 100%;
+
+    .heading {
+      text-align: left;
+      font-size: 3.9rem;
+      color: #fff;
+      max-width: 38.025rem;
+    }
+
+    .heading-emphasize {
+      color: #ecb22e;
+    }
+
+    .hero-header-text {
+      color: #fff;
+      font-size: 1.25rem;
+      margin: 0.5rem auto 2rem 0;
+      max-width: 35rem;
+    }
+
+    .signup-button {
+      width: auto;
+      height: auto;
+      padding: 19px 40px 20px;
+    }
   }
 }
