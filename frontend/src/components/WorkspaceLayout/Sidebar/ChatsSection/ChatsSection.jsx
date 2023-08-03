@@ -5,6 +5,7 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getWorkspaceUsers } from 'store/actions/workspaces';
 
@@ -27,7 +28,7 @@ function ChatsSection(props) {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h4>Chats</h4>
+      <h4>Direct messages</h4>
       {
         users.map((user) => (
           <ChatItem
@@ -41,5 +42,9 @@ function ChatsSection(props) {
     </div>
   );
 }
+
+ChatsSection.propTypes = {
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default ChatsSection;

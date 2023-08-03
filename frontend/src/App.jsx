@@ -17,6 +17,7 @@ import WorkspaceLayout from 'components/WorkspaceLayout';
 import NewWorkspace from 'components/NewWorkspace';
 import WorkspaceIndex from 'components/WorkspaceIndex';
 import Channel from 'components/Channel';
+import ComingSoonPlaceholder from 'components/shared/ComingSoonPlaceholder';
 
 import './App.scss';
 
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'chats/:chatId',
-            element: <h1>Hi from chat</h1>,
+            element: <ComingSoonPlaceholder featureName="Direct messages" />,
           },
           {
             path: '*',
