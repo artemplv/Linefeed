@@ -21,8 +21,8 @@ function Message(props) {
     dispatch(openModal('delete-message', { messageId }));
   };
 
-  const message = useSelector((state) => state.messages.byId[messageId]);
-  const user = useSelector((state) => state.users.byId[message?.authorId]);
+  const message = useSelector((state) => state.messages.byId?.[messageId]);
+  const user = useSelector((state) => state.users.byId?.[message?.authorId]);
   const sessionUser = useSelector((state) => state.session.user);
 
   const userName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim();

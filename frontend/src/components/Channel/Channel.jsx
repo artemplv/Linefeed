@@ -102,7 +102,10 @@ function Channel() {
   return (
     <div className="channel-page">
       <div className="channel-page-content">
-        <Heading channel={channel} />
+        <Heading
+          channel={channel}
+          workspaceId={workspaceId}
+        />
 
         <MessagesContainer
           channel={channel}

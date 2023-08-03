@@ -3,10 +3,16 @@
 .channel-heading {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 60px;
   padding: 0 1.5rem;
   border-bottom: 1px solid $background-flat;
   flex-shrink: 0;
+
+  .members-count {
+    color: $text-descriptive;
+    font-size: 0.85rem;
+  }
 
   .subheading {
     text-align: left;
