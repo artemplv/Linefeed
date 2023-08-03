@@ -10,7 +10,7 @@ function CreateWorkspaceBanner() {
       <div className="wrapper">
         <img src={imageSrc} alt="A woman with laptop" width={200} height={121} />
         <p>
-          <strong>Want to use Slack with a different team?</strong>
+          <strong>Want to use Linefeed with a different team?</strong>
         </p>
 
         <CreateWorkspaceButton />

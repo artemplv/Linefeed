@@ -9,7 +9,7 @@ function LoginFormPage() {
       className="signin-form-page"
       sidelink
     >
-      <h1 className="heading">Sign in to Slack</h1>
+      <h1 className="heading">Sign in to Linefeed</h1>
       <p className="subheading">
         We suggest using the
         {' '}

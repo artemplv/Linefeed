@@ -19,7 +19,7 @@ function SignupFormPage() {
       <Form />
 
       <div className="signin-existing-workspaces">
-        Already using Slack?
+        Already using Linefeed?
         <Link
           to="/signin"
           className="link bold"

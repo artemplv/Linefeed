@@ -33,7 +33,7 @@ function WorkspaceItem(props) {
           to={`/workspaces/${workspace?.id}`}
           className="button uppercase launch-button"
         >
-          Launch Slack
+          Launch Linefeed
         </Link>
       </div>
     </div>

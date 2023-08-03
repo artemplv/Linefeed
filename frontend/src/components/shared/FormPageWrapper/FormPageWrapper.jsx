@@ -29,7 +29,7 @@ function FormPageWrapper(props) {
           {
             sidelink && (
               <div className="sidelink">
-                New to Slack?
+                New to Linefeed?
                 <br />
                 <Link
                   to="/signup"

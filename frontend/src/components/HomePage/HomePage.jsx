@@ -38,7 +38,7 @@ function HomePage() {
 
               <p className="hero-header-text">
                 Connect the right people, find anything you need and automate the rest.
-                That&apos;s work in Slack, your productivity platform.
+                That&apos;s work in Linefeed, your productivity platform.
               </p>
 
               <Link
