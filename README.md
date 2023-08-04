@@ -56,3 +56,82 @@ Users can chat in real-time in channels and direct messages. This feature is imp
 
 ![ezgif-5-edb25d7947](https://github.com/artemplv/Linefeed/assets/48654322/41127c19-7b7d-4419-9169-05b8f42d4f0d)
 
+## Code Snippets
+
+### Controllers
+
+Here is an example of a ``create`` controller for messages. As soon as message is saved to a database, it is broadcasted to corresponding channel subscribers through websocket connection.
+
+```Ruby
+def create
+    workspace_id = params[:workspace_id]
+    @message = Message.new({
+      **message_params,
+      workspace_id: workspace_id,
+      author_id: current_user.id
+    })
+
+    ActiveRecord::Base.transaction do
+      if params[:channel_id]
+        @channel = Channel.find(params[:channel_id])
+        @message.channel = @channel
+      end
+      @message.save!
+    end
+
+    if params[:channel_id]
+      ChannelsChannel.broadcast_to @message.channel,
+        type: 'RECEIVE_MESSAGE',
+        **from_template('api/messages/show', message: @message)
+    end
+
+    render json: nil, status: :ok
+  end
+```
+
+### Components
+
+Here is how React's `useEffect` hook is used to handle websocket connections for channels. `useRef` hook is also used to scroll to the bottom of the messages container when a user sends a message to a channel.
+
+```JavaScript
+  const scrollToBottom = () => {
+    msgContainerRef.current.scrollTo(0, msgContainerRef.current.scrollHeight);
+  };
+
+  useEffect(() => {
+    const subscription = wsConsumer.subscriptions.create(
+      { channel: 'ChannelsChannel', id: channelId },
+      {
+        received: ({ type, message, id }) => {
+          switch (type) {
+            case 'RECEIVE_MESSAGE':
+              dispatch(setMessage(message));
+              if (message.authorId === currentUserId) {
+                scrollToBottom();
+              }
+              break;
+            case 'DESTROY_MESSAGE':
+              dispatch(removeMessage(id));
+              break;
+            default:
+              break;
+          }
+        },
+      },
+    );
+
+    const fetchMessages = async () => {
+      await dispatch(getMessages(workspaceId, channelId));
+      scrollToBottom();
+    };
+
+    fetchMessages();
+
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, [
+    channelId,
+  ]);
+```
+
