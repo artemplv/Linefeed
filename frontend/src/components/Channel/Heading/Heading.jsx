@@ -11,6 +11,7 @@ function Heading(props) {
   } = props;
 
   const workspace = useSelector((state) => state.workspaces.byId[workspaceId]);
+  const numOfMembers = workspace?.users?.length || 0;
 
   return (
     <div className="channel-heading">
@@ -26,7 +27,7 @@ function Heading(props) {
 
       <div>
         <span className="members-count">
-          {`${workspace?.users?.length || 0} members`}
+          {`${numOfMembers} ${numOfMembers === 1 ? 'member' : 'members'}`}
         </span>
       </div>
     </div>

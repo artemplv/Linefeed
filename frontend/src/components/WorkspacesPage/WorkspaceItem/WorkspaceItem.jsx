@@ -11,6 +11,7 @@ function WorkspaceItem(props) {
   } = props;
 
   const workspace = useSelector((state) => state.workspaces.byId[workspaceId]);
+  const numOfMembers = workspace?.users?.length || 0;
 
   return (
     <div className="workspaces-list-item">
@@ -25,7 +26,7 @@ function WorkspaceItem(props) {
             {workspace?.name}
           </span>
           <span className="workspace-members-count">
-            {`${workspace?.users?.length || 0} members`}
+            {`${numOfMembers} ${numOfMembers === 1 ? 'member' : 'members'}`}
           </span>
         </div>
 
