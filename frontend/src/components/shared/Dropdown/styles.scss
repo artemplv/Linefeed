@@ -39,6 +39,7 @@
     overflow-y: auto;
     box-shadow: 0 4px 12px 0 #0000001f;
     border: 1px solid $ghost-light;
+    z-index: 99;
 
     &.stick-left {
       left: 1rem;

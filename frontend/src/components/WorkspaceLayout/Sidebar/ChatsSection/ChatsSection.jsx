@@ -27,7 +27,7 @@ function ChatsSection(props) {
   }, [workspaceId]);
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div style={{ padding: '1rem', paddingTop: 5, paddingBottom: '2rem' }}>
       <h4>Direct messages</h4>
       {
         users.map((user) => (

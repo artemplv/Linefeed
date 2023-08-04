@@ -34,6 +34,7 @@ function Channel() {
   const dispatch = useDispatch();
   const msgContainerRef = useRef(null);
 
+  const currentUserId = useSelector((state) => state.session?.user?.id);
   let channel = useSelector((state) => state.channels.byId[channelId]);
   channel = channel || {};
 
@@ -52,6 +53,11 @@ function Channel() {
             case 'RECEIVE_MESSAGE':
               dispatch(setMessage(message));
               setMessageIds((ids) => [...ids, message.id]);
+              if (message.authorId === currentUserId) {
+                setTimeout(() => {
+                  scrollToBottom();
+                }, 50);
+              }
               break;
             case 'DESTROY_MESSAGE':
               dispatch(removeMessage(id));
@@ -93,8 +99,7 @@ function Channel() {
   // });
 
   const handleSend = async (text) => {
-    await messages.createMessage(workspaceId, channelId)({ body: text });
-    scrollToBottom();
+    messages.createMessage(workspaceId, channelId)({ body: text });
   };
 
   const channelName = channel.name || '';

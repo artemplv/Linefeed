@@ -5,6 +5,7 @@
   justify-content: space-between;
   margin: 5px 0;
   padding: 10px 30px;
+  position: relative;
 
   .main-section {
     display: flex;
@@ -14,11 +15,16 @@
   .delete-button {
     display: none;
     align-self: center;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: $text-error;
-    background: none;
+    padding: 2px 7px;
     border: none;
     cursor: pointer;
+    position: absolute;
+    /* top: 1rem; */
+    right: 1.5rem;
+    background: $background-empty;
+    border-radius: 6px;
   }
 
   &:hover {
