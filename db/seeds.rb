@@ -14,6 +14,8 @@ require "open-uri"
 
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('workspaces')
+  ApplicationRecord.connection.reset_pk_sequence!('channels')
+  ApplicationRecord.connection.reset_pk_sequence!('messages')
 
   puts "Creating users..."
   
@@ -41,6 +43,18 @@ require "open-uri"
   )
 
   # id = 3
+  samwise = User.create!(
+    first_name: 'Samwise',
+    last_name: 'Gamgee',
+    email: 'samwise@example.com',
+    password: 'password'
+  )
+  samwise.profile_picture.attach(
+    io: URI.open('https://slack-clone-artemplv-seed.s3.amazonaws.com/samwise-avatar.jpg'),
+    filename: 'samwise-avatar.jpg'
+  )
+
+  # id = 4
   gandalf = User.create!(
     first_name: 'Gandalf',
     last_name: 'the Grey',
@@ -52,7 +66,7 @@ require "open-uri"
     filename: 'gandalf-avatar.jpg'
   )
 
-  # id = 4
+  # id = 5
   aragorn = User.create!(
     first_name: 'Aragorn',
     last_name: '(Strider)',
@@ -64,7 +78,7 @@ require "open-uri"
     filename: 'aragorn-avatar.jpg'
   )
 
-  # id = 5
+  # id = 6
   legolas = User.create!(
     first_name: 'Legolas',
     last_name: 'Greenleaf',
@@ -76,7 +90,19 @@ require "open-uri"
     filename: 'legolas-avatar.jpg'
   )
 
-   # id = 6
+  # id = 7
+  arwen = User.create!(
+    first_name: 'Arwen',
+    last_name: 'Undómiel',
+    email: 'arwen@example.com',
+    password: 'password'
+  )
+  arwen.profile_picture.attach(
+    io: URI.open('https://slack-clone-artemplv-seed.s3.amazonaws.com/arwen-avatar.jpg'),
+    filename: 'arwen-avatar.jpg'
+  )
+
+   # id = 8
    gimli = User.create!(
     first_name: 'Gimli',
     last_name: 'son of Gloin',
@@ -88,18 +114,6 @@ require "open-uri"
     filename: 'gimli-avatar.jpg'
   )
 
-   # id = 7
-   samwise = User.create!(
-    first_name: 'Samwise',
-    last_name: 'Gamgee',
-    email: 'samwise@example.com',
-    password: 'password'
-  )
-  samwise.profile_picture.attach(
-    io: URI.open('https://slack-clone-artemplv-seed.s3.amazonaws.com/samwise-avatar.jpg'),
-    filename: 'samwise-avatar.jpg'
-  )
-  
 
   # 9.times do
   #   User.create!({
@@ -112,8 +126,9 @@ require "open-uri"
 
   puts "Creating workspaces..."
 
+  # id = 1
   mew = Workspace.create!({
-    name: 'Middle-earth',
+    name: 'Fellowship Studios',
     owner_id: 2,
   });
   mew.picture.attach(
@@ -121,11 +136,119 @@ require "open-uri"
     filename: 'middle-earth-pic.jpg'
   )
 
-  6.times do |i|
+  7.times do |i|
     WorkspaceUser.create!({
       workspace_id: 1,
       user_id: i + 2,
-    });  
+    });
+  end
+
+  puts "Creating channels..."
+
+  # id = 1
+  Channel.create!({
+    name: 'Fellowship of the Ring',
+    description: 'A channel for general announcements and important updates for the entire team.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  # id = 2
+  Channel.create!({
+    name: "Gandalf's Guidance",
+    description: 'A channel dedicated to providing tips and guidance on using the tech stack effectively.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  # id = 3
+  Channel.create!({
+    name: "Elven Archers",
+    description: 'A channel for sharing and discussing coding and technical topics among developers.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  # id = 4
+  Channel.create!({
+    name: "Gimli's Hammer",
+    description: 'A channel for discussing and resolving technical issues or bugs.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  # id = 5
+  Channel.create!({
+    name: "Dwarven Delights",
+    description: 'A channel for sharing interesting articles and resources about programming.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  # id = 6
+  Channel.create!({
+    name: "Boromir's Bold Ideas",
+    description: 'A channel for proposing and discussing new features or improvements.',
+    workspace_id: 1,
+    owner_id: 2,
+  });
+
+  puts "Creating messages..."
+
+  # id = 1
+  Message.create!({
+    body: "Hey everyone! 🌟 Welcome to the #Fellowship of the Ring channel! This is where we'll discuss important updates and announcements for our team. Let's work together to achieve our goals! 💪",
+    author_id: 2,
+    workspace_id: 1,
+  });
+
+  # id = 2
+  Message.create!({
+    body: "Hello, everyone! 🌿 As the loyal supporter of our fellowship, I'll be there for you all, offering help and encouragement whenever needed. Together, we'll overcome any obstacles!",
+    author_id: 3,
+    workspace_id: 1,
+  });
+
+  # id = 3
+  Message.create!({
+    body: "Greetings, dear friends! 🧙‍♂️ I shall be the guide in our journey. If you have any questions or need assistance, feel free to reach out to me. May the light of knowledge shine upon us! 🔥",
+    author_id: 4,
+    workspace_id: 1,
+  });
+
+  # id = 4
+  Message.create!({
+    body: "Good to be here! 👋 As the leader of our fellowship, I'll ensure we stay on the right path and make progress in our endeavors. Feel free to share your ideas and thoughts. Let's inspire each other!",
+    author_id: 5,
+    workspace_id: 1,
+  });
+
+  # id = 5
+  Message.create!({
+    body: "Hello, everyone! 🏹 I'm excited to bring my skills as an archer to our fellowship. If you need help with any technical aspects, just let me know. We shall hit our targets together! 🎯",
+    author_id: 6,
+    workspace_id: 1,
+  });
+
+  # id = 6
+  Message.create!({
+    body: "Greetings, dear friends! 🌹 As a member of our fellowship, I bring with me the grace and wisdom of the elves. If any of you need assistance or guidance, feel free to seek me out. Together, we shall create a workspace of unity and harmony, embracing the diversity of our talents. May the stars shine upon our endeavors and light our path to success! 🌟🧝‍♀️",
+    author_id: 7,
+    workspace_id: 1,
+  });
+
+  # id = 7
+  Message.create!({
+    body: "Well met, fellow members! 🪓 I'll lend my strength and expertise to forge strong solutions for our team. Let's build robust foundations together! 💪",
+    author_id: 8,
+    workspace_id: 1,
+  });
+
+  7.times do |i|
+    ChannelMessage.create!({
+      channel_id: 1,
+      message_id: i + 1,
+    });
   end
 
   puts "Done!"
