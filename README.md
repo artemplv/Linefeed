@@ -17,7 +17,7 @@ The Linefeed stack uses ``React`` and ``Redux`` to render and manage the state o
 
 Linefeed serves information from the database to the frontend using ``Rails``.
 
-ActiveCable (websocket) is utilized to implement live messaging.
+Action Cable, which integrates WebSockets with the rest of the application, is utilized to implement live messaging.
 
 ### PostgreSQL
 
