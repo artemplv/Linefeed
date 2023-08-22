@@ -1,6 +1,5 @@
 import React, {
   useEffect,
-  useState,
   useRef,
 } from 'react';
 import {
@@ -38,8 +37,6 @@ function Channel() {
   let channel = useSelector((state) => state.channels.byId[channelId]);
   channel = channel || {};
 
-  const [messageIds, setMessageIds] = useState([]);
-
   const scrollToBottom = () => {
     msgContainerRef.current.scrollTo(0, msgContainerRef.current.scrollHeight);
   };
@@ -51,8 +48,8 @@ function Channel() {
         received: ({ type, message, id }) => {
           switch (type) {
             case 'RECEIVE_MESSAGE':
-              dispatch(setMessage(message));
-              setMessageIds((ids) => [...ids, message.id]);
+              dispatch(setMessage(message, { channelId }));
+
               if (message.authorId === currentUserId) {
                 setTimeout(() => {
                   scrollToBottom();
@@ -60,8 +57,7 @@ function Channel() {
               }
               break;
             case 'DESTROY_MESSAGE':
-              dispatch(removeMessage(id));
-              setMessageIds((ids) => ids.filter((messageId) => messageId !== id));
+              dispatch(removeMessage(id, { channelId }));
               break;
             default:
               break;
@@ -84,16 +80,6 @@ function Channel() {
     channelId,
   ]);
 
-  useEffect(() => {
-    if (channel.id) {
-      setMessageIds(channel.messages);
-    } else {
-      setMessageIds([]);
-    }
-  }, [
-    channel.id,
-  ]);
-
   // useEffect(() => {
   //   msgContainerRef.current.scrollTo({ top: 0 });
   // });
@@ -103,6 +89,7 @@ function Channel() {
   };
 
   const channelName = channel.name || '';
+  const messageIds = channel.messages || [];
 
   return (
     <div className="channel-page">
