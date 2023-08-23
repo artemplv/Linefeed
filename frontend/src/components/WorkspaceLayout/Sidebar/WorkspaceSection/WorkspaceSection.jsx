@@ -4,6 +4,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
+import { workspaceById } from 'store/selectors/workspaces';
+
 import Dropdown from 'components/shared/Dropdown';
 import SectionWrapper from './SectionWrapper';
 
@@ -18,7 +20,7 @@ function WorkspaceSection(props) {
     setDropdownOpen((value) => !value);
   };
 
-  const workspace = useSelector((state) => state.workspaces.byId[workspaceId]);
+  const workspace = useSelector((state) => workspaceById(state, workspaceId));
 
   return (
     <SectionWrapper>

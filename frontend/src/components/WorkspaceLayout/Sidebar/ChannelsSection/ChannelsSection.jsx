@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import { getWorkspaceChannels } from 'store/actions/channels';
 import { openModal } from 'store/actions/modal';
+import { allChannels } from 'store/selectors/channels';
 
 import Button from 'components/shared/Button';
 import ChannelItem from './ChannelItem';
@@ -21,7 +22,7 @@ function ChannelsSection(props) {
 
   const dispatch = useDispatch();
 
-  const channels = useSelector((state) => Object.values(state.channels.byId || {}));
+  const channels = useSelector(allChannels);
 
   useEffect(() => {
     if (workspaceId) {

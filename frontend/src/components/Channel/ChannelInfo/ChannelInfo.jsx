@@ -1,16 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 
 import { openModal } from 'store/actions/modal';
+import { channelById } from 'store/selectors/channels';
 
 import Button from 'components/shared/Button';
 
 function ChannelInfo(props) {
   const {
-    channel,
+    channelId,
   } = props;
 
   const dispatch = useDispatch();
+  const channel = useSelector((state) => channelById(state, channelId));
 
   const onEditDescription = () => {
     dispatch(openModal('edit-channel-description'));

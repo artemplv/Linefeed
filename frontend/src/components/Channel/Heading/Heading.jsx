@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
+import { workspaceById } from 'store/selectors/workspaces';
+
 import Icon from 'components/shared/Icon';
 
 function Heading(props) {
@@ -10,7 +12,7 @@ function Heading(props) {
     workspaceId,
   } = props;
 
-  const workspace = useSelector((state) => state.workspaces.byId[workspaceId]);
+  const workspace = useSelector((state) => workspaceById(state, workspaceId));
   const numOfMembers = workspace?.users?.length || 0;
 
   return (

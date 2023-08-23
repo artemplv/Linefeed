@@ -19,6 +19,9 @@ import {
   setMessage,
   removeMessage,
 } from 'store/actions/messages';
+import {
+  channelById,
+} from 'store/selectors/channels';
 
 import MessagePane from 'components/shared/MessagePane';
 import Heading from './Heading';
@@ -34,8 +37,7 @@ function Channel() {
   const msgContainerRef = useRef(null);
 
   const currentUserId = useSelector((state) => state.session?.user?.id);
-  let channel = useSelector((state) => state.channels.byId[channelId]);
-  channel = channel || {};
+  const channel = useSelector((state) => channelById(state, channelId));
 
   const scrollToBottom = () => {
     msgContainerRef.current.scrollTo(0, msgContainerRef.current.scrollHeight);
@@ -89,7 +91,6 @@ function Channel() {
   };
 
   const channelName = channel.name || '';
-  const messageIds = channel.messages || [];
 
   return (
     <div className="channel-page">
@@ -100,8 +101,7 @@ function Channel() {
         />
 
         <MessagesContainer
-          channel={channel}
-          messageIds={messageIds || []}
+          channelId={channelId}
           msgContainerRef={msgContainerRef}
         />
 

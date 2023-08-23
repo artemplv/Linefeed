@@ -5,6 +5,9 @@ import {
 } from 'react-redux';
 
 import { getWorkspaces } from 'store/actions/workspaces';
+import {
+  allWorkspaces,
+} from 'store/selectors/workspaces';
 
 import WorkspaceItem from '../WorkspaceItem';
 
@@ -16,7 +19,7 @@ function WorkspacesList() {
   }, []);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const workspaces = useSelector((state) => Object.values(state.workspaces.byId || {}));
+  const workspaces = useSelector(allWorkspaces);
 
   return (
     <div className="workspaces-list">

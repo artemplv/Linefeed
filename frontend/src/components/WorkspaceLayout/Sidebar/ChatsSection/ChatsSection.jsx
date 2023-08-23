@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 
 import { getWorkspaceUsers } from 'store/actions/workspaces';
+import { allUsers } from 'store/selectors/users';
 
 import ChatItem from './ChatItem';
 
@@ -18,7 +19,7 @@ function ChatsSection(props) {
 
   const dispatch = useDispatch();
 
-  const users = useSelector((state) => Object.values(state.users.byId));
+  const users = useSelector(allUsers);
 
   useEffect(() => {
     if (workspaceId) {

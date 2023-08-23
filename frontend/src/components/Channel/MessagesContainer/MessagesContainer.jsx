@@ -1,19 +1,27 @@
 import React from 'react';
+import {
+  useSelector,
+} from 'react-redux';
+
+import {
+  channelMessages,
+} from 'store/selectors/channels';
 
 import Message from 'components/shared/Message';
 import ChannelInfo from '../ChannelInfo';
 
 function MessagesContainer(props) {
   const {
-    channel,
-    messageIds,
+    channelId,
     msgContainerRef,
   } = props;
+
+  const messageIds = useSelector((state) => channelMessages(state, channelId));
 
   return (
     <div className="messages-container" ref={msgContainerRef}>
       <ChannelInfo
-        channel={channel}
+        channelId={channelId}
       />
 
       {
