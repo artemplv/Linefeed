@@ -28,4 +28,9 @@ class Chat < ApplicationRecord
     dependent: :destroy
   has_many :messages,
     through: :chat_messages
+
+  def interlocutor_id
+    participants = [self.interlocutor_1_id, self.interlocutor_2_id]
+    participants.find { |user_id| user_id != current_user.id } || participants.first
+  end
 end

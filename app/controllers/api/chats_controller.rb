@@ -6,8 +6,6 @@ class Api::ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id]).includes(:messages)
 
-    participants = [@chat.interlocutor_1_id, @chat.interlocutor_2_id]
-    @chat.interlocutor_id = participants.reject { |user_id| user_id == current_user.id }
     @chat.interlocutor = User.find(@chat.interlocutor_id)
 
     render :show
@@ -38,6 +36,8 @@ class Api::ChatsController < ApplicationController
     })
 
     if @chat.save
+      @chat.interlocutor = User.find(interlocutor_id)
+
       render :show
     else
       @errors = @chat.errors
