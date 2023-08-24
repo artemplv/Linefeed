@@ -8,8 +8,19 @@ class Api::ChatsController < ApplicationController
 
     participants = [@chat.interlocutor_1_id, @chat.interlocutor_2_id]
     @chat.interlocutor_id = participants.reject { |user_id| user_id == current_user.id }
+    @chat.interlocutor = User.find(@chat.interlocutor_id)
 
     render :show
+  end
+
+  def index
+    workspace_id = params[:workspace_id]
+
+    @chats = Chat
+      .where('workspace_id = ?', workspace_id)
+      .where('? IN (interlocutor_1_id, interlocutor_2_id)', current_user.id)
+
+    render :index
   end
 
   def create

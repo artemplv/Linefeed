@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :workspaces, only: [:index, :show, :update, :create] do
       resources :users, only: [:index]
       resources :channels, only: [:index, :create]
-      resources :chats, only: [:create]
+      resources :chats, only: [:index, :create]
     end
     
     resources :channels, only: [:show, :update, :destroy] do
