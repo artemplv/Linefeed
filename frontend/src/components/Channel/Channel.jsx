@@ -87,7 +87,7 @@ function Channel() {
   // });
 
   const handleSend = async (text) => {
-    messages.createMessage(workspaceId, channelId)({ body: text });
+    messages.createMessage({ channelId })({ body: text });
   };
 
   const channelName = channel.name || '';
