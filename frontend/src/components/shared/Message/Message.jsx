@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   useDispatch,
@@ -7,6 +9,7 @@ import {
 
 import { formatDateTime } from 'utils';
 import { openModal } from 'store/actions/modal';
+import { getUser } from 'store/actions/users';
 
 import Avatar from 'components/shared/Avatar';
 
@@ -26,6 +29,15 @@ function Message(props) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const userName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim();
+
+  useEffect(() => {
+    if (message?.authorId && !user?.id) {
+      dispatch(getUser(message.authorId));
+    }
+  }, [
+    message?.authorId,
+    user?.id,
+  ]);
 
   return (
     <div className="message-wrapper">

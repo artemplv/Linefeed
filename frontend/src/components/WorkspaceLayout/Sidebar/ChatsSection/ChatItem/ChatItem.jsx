@@ -18,7 +18,6 @@ function ChatItem(props) {
   const {
     workspaceId,
     chatId,
-    chatName,
   } = props;
 
   const dispatch = useDispatch();
@@ -36,6 +35,7 @@ function ChatItem(props) {
   const isSelf = Number(chat.interlocutorId) === sessionUserId;
 
   const chatPic = interlocutor?.pictureUrl;
+  const chatName = `${interlocutor?.firstName || ''} ${interlocutor?.lastName || ''}`.trim();
 
   return (
     <SidebarLink
