@@ -21,8 +21,8 @@ class Api::ChatsController < ApplicationController
     participants = [initiator_id, interlocutor_id].sort
     
     @chat = Chat.new({
-      interlocutor_1_id: interlocutors[0],
-      interlocutor_2_id: interlocutors[1],
+      interlocutor_1_id: participants[0],
+      interlocutor_2_id: participants[1],
       workspace_id: workspace_id,
     })
 
