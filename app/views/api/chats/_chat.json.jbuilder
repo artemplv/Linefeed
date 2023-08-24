@@ -1,5 +1,7 @@
-json.extract! chat, :id, :interlocutor_id
+json.extract! chat, :id
+
+json.interlocutor_id chat.get_interlocutor_id(@current_user)
 
 json.messages do
-  json.array! channel.messages.pluck :id
+  json.array! chat.messages.pluck :id
 end
