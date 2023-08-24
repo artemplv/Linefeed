@@ -3,13 +3,22 @@ class Api::ChatsController < ApplicationController
 
   before_action :require_logged_in
 
+  def show
+    @chat = Chat.find(params[:id]).includes(:messages)
+
+    participants = [@chat.interlocutor_1_id, @chat.interlocutor_2_id]
+    @chat.interlocutor_id = participants.reject { |user_id| user_id == current_user.id }
+
+    render :show
+  end
+
   def create
-    chat_id = params[:chat_id]
+    workspace_id = params[:workspace_id]
 
     initiator_id = current_user.id
     interlocutor_id = chat_params.interlocutor
 
-    interlocutors = [initiator_id, interlocutor_id].sort
+    participants = [initiator_id, interlocutor_id].sort
     
     @chat = Chat.new({
       interlocutor_1_id: interlocutors[0],
