@@ -1,8 +1,16 @@
 import csrfFetch from 'api';
 import setMessages from './setMessages';
 
-const getMessages = (workspaceId, channelId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/workspaces/${workspaceId}/messages?channel_id=${channelId}`);
+const getMessages = ({ channelId, chatId }) => async (dispatch) => {
+  let url;
+
+  if (channelId) {
+    url = `/api/channels/${channelId}/messages`;
+  } else {
+    url = `/api/chats/${chatId}/messages`;
+  }
+
+  const response = await csrfFetch(url);
 
   const data = await response.json();
   dispatch(setMessages(data.messages));

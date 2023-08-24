@@ -69,7 +69,7 @@ function Channel() {
     );
 
     const fetchMessages = async () => {
-      await dispatch(getMessages(workspaceId, channelId));
+      await dispatch(getMessages({ channelId }));
       scrollToBottom();
     };
 
