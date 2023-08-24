@@ -6,6 +6,7 @@ import sessionReducer from './session';
 import workspacesReducer from './workspaces';
 import usersReducer from './users';
 import channelsReducer from './channels';
+import chatsReducer from './chats';
 import messagesReducer from './messages';
 import uiReducer from './ui';
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   workspaces: workspacesReducer,
   users: usersReducer,
   channels: channelsReducer,
+  chats: chatsReducer,
   messages: messagesReducer,
   ui: uiReducer,
 });
