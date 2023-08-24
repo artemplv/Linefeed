@@ -3,8 +3,8 @@ import {
 } from 'reselect';
 
 const byId = createSelector(
-  (state) => state.users.byId,
-  (_, userId) => userId,
+  (state) => state.chats.byId,
+  (_, chatId) => chatId,
   (collection, id) => collection[id] || {},
 );
 

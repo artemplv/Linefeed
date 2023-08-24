@@ -1,5 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {
+  useEffect,
+} from 'react';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+
+import { getChat } from 'store/actions/chats';
+
+import { chatById } from 'store/selectors/chats';
+import { userById } from 'store/selectors/users';
 
 import Avatar from 'components/shared/Avatar';
 import SidebarLink from 'components/WorkspaceLayout/Sidebar/SidebarLink';
@@ -7,14 +17,25 @@ import SidebarLink from 'components/WorkspaceLayout/Sidebar/SidebarLink';
 function ChatItem(props) {
   const {
     workspaceId,
-    chatId, // user id for now
+    chatId,
     chatName,
   } = props;
 
-  const sessionUserId = useSelector((state) => state.session.user?.id);
-  const isSelf = Number(chatId) === sessionUserId;
+  const dispatch = useDispatch();
 
-  const chatPic = useSelector((state) => state.users.byId[chatId]?.pictureUrl);
+  useEffect(() => {
+    if (chatId) {
+      dispatch(getChat(chatId));
+    }
+  }, [chatId]);
+
+  const sessionUserId = useSelector((state) => state.session.user?.id);
+  const chat = useSelector((state) => chatById(state, chatId));
+  const interlocutor = useSelector((state) => userById(state, chat.interlocutorId));
+
+  const isSelf = Number(chat.interlocutorId) === sessionUserId;
+
+  const chatPic = interlocutor?.pictureUrl;
 
   return (
     <SidebarLink
