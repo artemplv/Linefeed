@@ -1,4 +1,4 @@
 module ApplicationCable
-  class Chat < ActionCable::Chat::Base
+  class Chat < ActionCable::Channel::Base
   end
 end

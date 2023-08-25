@@ -11,16 +11,20 @@ Rails.application.routes.draw do
     
     resources :workspaces, only: [:index, :show, :update, :create] do
       resources :users, only: [:index]
-      resources :channels, only: [:index, :create]
-      resources :chats, only: [:index, :create]
+      resources :channels, only: [:index, :create] do
+        resources :messages, only: [:create]
+      end
+      resources :chats, only: [:index, :create] do
+        resources :messages, only: [:create]
+      end
     end
     
     resources :channels, only: [:show, :update, :destroy] do
-      resources :messages, only: [:create, :index]
+      resources :messages, only: [:index]
     end
     
     resources :chats, only: [:show, :destroy] do
-      resources :messages, only: [:create, :index]
+      resources :messages, only: [:index]
     end
     
     resources :messages, only: [:destroy]
