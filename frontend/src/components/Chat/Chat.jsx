@@ -22,6 +22,7 @@ import {
 
 import MessagePane from 'components/shared/MessagePane';
 import MessagesContainer from './MessagesContainer';
+import Heading from './Heading';
 
 function Chat() {
   const {
@@ -84,7 +85,7 @@ function Chat() {
   return (
     <div className="chat-page">
       <div className="chat-page-content">
-        <h1>Hello from chat</h1>
+        <Heading chatId={chatId} />
 
         <MessagesContainer
           chatId={chatId}
