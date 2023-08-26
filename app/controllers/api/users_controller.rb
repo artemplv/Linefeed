@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   wrap_parameters include: User.attribute_names + ['password']
 
-  before_action :require_logged_in, only: [:index, :show, :search]
+  before_action :require_logged_in, only: [:index, :show]
 
   def create
     @user = User.new(user_params)
@@ -29,32 +29,6 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     render :show
-  end
-
-  def search
-    workspace = Workspace.find(params[:workspace_id])
-
-    @users = workspace.users
-      .select("users.*, common_chat_id")
-      .joins("
-        LEFT JOIN (
-          SELECT
-            id AS common_chat_id,
-            interlocutor_1_id,
-            interlocutor_2_id,
-            workspace_id
-          FROM chats
-          WHERE workspace_id = #{workspace.id} AND #{current_user.id} IN (interlocutor_1_id, interlocutor_2_id)
-          LIMIT 1
-        ) AS common_chat
-        ON(users.id = common_chat.interlocutor_1_id OR users.id = common_chat.interlocutor_2_id)
-      ")
-      .where(
-        "CONCAT(first_name, ' ', last_name) LIKE '%#{params[:query]}%' OR email LIKE '%#{params[:query]}%'",
-      )
-      .limit(5)
-
-    render :index
   end
 
   private

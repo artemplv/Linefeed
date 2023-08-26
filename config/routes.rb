@@ -11,13 +11,13 @@ Rails.application.routes.draw do
     
     resources :workspaces, only: [:index, :show, :update, :create] do
       resources :users, only: [:index]
-      get '/users/search', to: 'users#search'
       resources :channels, only: [:index, :create] do
         resources :messages, only: [:create]
       end
       resources :chats, only: [:index, :create] do
         resources :messages, only: [:create]
       end
+      get '/search', to: 'workspaces#search'
     end
     
     resources :channels, only: [:show, :update, :destroy] do
