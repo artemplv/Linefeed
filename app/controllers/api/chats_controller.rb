@@ -26,7 +26,7 @@ class Api::ChatsController < ApplicationController
     workspace_id = params[:workspace_id]
 
     initiator_id = current_user.id
-    interlocutor_id = chat_params.interlocutor
+    interlocutor_id = params[:interlocutor_id]
 
     participants = [initiator_id, interlocutor_id].sort
     
@@ -57,11 +57,6 @@ class Api::ChatsController < ApplicationController
   end
 
   private
-
-  def chat_params
-    params.require(:chat).permit(:interlocutor)
-  end
-
 
   def ensure_user_self_chat
     workspace_id = params[:workspace_id]

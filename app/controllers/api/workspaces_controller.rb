@@ -61,8 +61,8 @@ class Api::WorkspacesController < ApplicationController
             interlocutor_2_id,
             workspace_id
           FROM chats
-          WHERE workspace_id = #{workspace.id} AND #{current_user.id} IN (interlocutor_1_id, interlocutor_2_id)
-          LIMIT 1
+          WHERE workspace_id = #{workspace.id}
+            AND (interlocutor_1_id = #{current_user.id} OR interlocutor_2_id = #{current_user.id})
         ) AS common_chat
         ON(users.id = common_chat.interlocutor_1_id OR users.id = common_chat.interlocutor_2_id)
       ")
