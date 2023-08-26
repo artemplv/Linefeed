@@ -52,20 +52,6 @@ class Api::WorkspacesController < ApplicationController
     search_query = params[:query].downcase
 
     @users = workspace.users
-      .select("users.*, common_chat_id")
-      .joins("
-        LEFT JOIN (
-          SELECT
-            id AS common_chat_id,
-            interlocutor_1_id,
-            interlocutor_2_id,
-            workspace_id
-          FROM chats
-          WHERE workspace_id = #{workspace.id}
-            AND (interlocutor_1_id = #{current_user.id} OR interlocutor_2_id = #{current_user.id})
-        ) AS common_chat
-        ON(users.id = common_chat.interlocutor_1_id OR users.id = common_chat.interlocutor_2_id)
-      ")
       .where(
         "LOWER(CONCAT(first_name, ' ', last_name)) LIKE '%#{search_query}%' OR LOWER(email) LIKE '%#{search_query}%'",
       )
@@ -73,6 +59,7 @@ class Api::WorkspacesController < ApplicationController
 
     @channels = workspace.channels
       .where("LOWER(name) LIKE '%#{search_query}%'")
+      .limit(5)
 
     render 'api/workspaces/search'
   end
