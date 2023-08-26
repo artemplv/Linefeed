@@ -28,7 +28,10 @@ const channelsReducer = (state = initialState, action) => {
     case SET_CHANNELS:
       return {
         ...state,
-        byId: action.payload,
+        byId: {
+          ...state.byId,
+          ...action.payload,
+        },
       };
     case REMOVE_CHANNEL:
       const newState = {
