@@ -1,0 +1,20 @@
+@import 'assets/variables';
+
+.chat-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid $background-flat;
+  flex-shrink: 0;
+  background-color: white;
+
+  .subheading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    font-weight: bold;
+  }
+}

@@ -8,6 +8,10 @@ class Api::MessagesController < ApplicationController
       @channel = Channel.find(params[:channel_id])
       
       @messages = @channel.messages
+    elsif params[:chat_id]
+      @chat = Chat.find(params[:chat_id])
+
+      @messages = @chat.messages
     end
     
     render :index
@@ -27,11 +31,24 @@ class Api::MessagesController < ApplicationController
         @channel = Channel.find(params[:channel_id])
         @message.channel = @channel
       end
+      
+      # save message to a chat
+      if params[:chat_id]
+        @chat = Chat.find(params[:chat_id])
+        @message.chat = @chat
+      end
+      
       @message.save!
     end
 
     if params[:channel_id]
       ChannelsChannel.broadcast_to @message.channel,
+        type: 'RECEIVE_MESSAGE',
+        **from_template('api/messages/show', message: @message)
+    end
+
+    if params[:chat_id]
+      ChatsChannel.broadcast_to @message.chat,
         type: 'RECEIVE_MESSAGE',
         **from_template('api/messages/show', message: @message)
     end
@@ -44,6 +61,10 @@ class Api::MessagesController < ApplicationController
 
     if @message
       ChannelsChannel.broadcast_to @message.channel,
+        type: 'DESTROY_MESSAGE',
+        id: @message.id
+
+      ChatsChannel.broadcast_to @message.chat,
         type: 'DESTROY_MESSAGE',
         id: @message.id
       

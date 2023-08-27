@@ -1,10 +1,10 @@
 # == Schema Information
 #
-# Table name: workspace_users
+# Table name: channel_messages
 #
-#  id           :bigint           not null, primary key
-#  workspace_id :bigint           not null
-#  user_id      :bigint           not null
+#  id         :bigint           not null, primary key
+#  channel_id :bigint           not null
+#  message_id :bigint           not null
 #
 class ChannelMessage < ApplicationRecord
   belongs_to :message

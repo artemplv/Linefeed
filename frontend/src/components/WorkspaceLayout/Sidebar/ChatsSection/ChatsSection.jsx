@@ -7,8 +7,8 @@ import {
 } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getWorkspaceUsers } from 'store/actions/workspaces';
-import { allUsers } from 'store/selectors/users';
+import { getChats } from 'store/actions/chats';
+import { allChats } from 'store/selectors/chats';
 
 import ChatItem from './ChatItem';
 
@@ -19,11 +19,11 @@ function ChatsSection(props) {
 
   const dispatch = useDispatch();
 
-  const users = useSelector(allUsers);
+  const chats = useSelector(allChats);
 
   useEffect(() => {
     if (workspaceId) {
-      dispatch(getWorkspaceUsers(workspaceId));
+      dispatch(getChats(workspaceId));
     }
   }, [workspaceId]);
 
@@ -31,12 +31,11 @@ function ChatsSection(props) {
     <div style={{ padding: '1rem', paddingTop: 5, paddingBottom: '2rem' }}>
       <h4>Direct messages</h4>
       {
-        users.map((user) => (
+        chats.map((chat) => (
           <ChatItem
-            key={user.id}
+            key={chat.id}
+            chatId={chat.id}
             workspaceId={workspaceId}
-            chatId={user.id}
-            chatName={`${user.firstName} ${user.lastName}`}
           />
         ))
       }

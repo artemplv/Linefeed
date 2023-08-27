@@ -46,6 +46,24 @@ class Api::WorkspacesController < ApplicationController
     end
   end
 
+  def search
+    workspace = Workspace.find(params[:workspace_id])
+
+    search_query = params[:query].downcase
+
+    @users = workspace.users
+      .where(
+        "LOWER(CONCAT(first_name, ' ', last_name)) LIKE '%#{search_query}%' OR LOWER(email) LIKE '%#{search_query}%'",
+      )
+      .limit(5)
+
+    @channels = workspace.channels
+      .where("LOWER(name) LIKE '%#{search_query}%'")
+      .limit(5)
+
+    render 'api/workspaces/search'
+  end
+
   private
 
   def workspace_params

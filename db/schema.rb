@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_155541) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_191245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_155541) do
     t.index ["workspace_id"], name: "index_channels_on_workspace_id"
   end
 
+  create_table "chat_messages", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.bigint "message_id", null: false
+    t.index ["chat_id"], name: "index_chat_messages_on_chat_id"
+    t.index ["message_id"], name: "index_chat_messages_on_message_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.bigint "interlocutor_1_id", null: false
+    t.bigint "interlocutor_2_id", null: false
+    t.bigint "workspace_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interlocutor_1_id", "interlocutor_2_id"], name: "index_chats_on_interlocutor_1_id_and_interlocutor_2_id", unique: true
+    t.index ["interlocutor_2_id"], name: "index_chats_on_interlocutor_2_id"
+    t.index ["workspace_id"], name: "index_chats_on_workspace_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "author_id", null: false
@@ -103,6 +121,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_155541) do
   add_foreign_key "channel_messages", "messages"
   add_foreign_key "channels", "users", column: "owner_id"
   add_foreign_key "channels", "workspaces"
+  add_foreign_key "chat_messages", "chats"
+  add_foreign_key "chat_messages", "messages"
+  add_foreign_key "chats", "users", column: "interlocutor_1_id"
+  add_foreign_key "chats", "users", column: "interlocutor_2_id"
+  add_foreign_key "chats", "workspaces"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "messages", "workspaces"
   add_foreign_key "workspace_users", "users"

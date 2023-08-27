@@ -69,7 +69,7 @@ function Channel() {
     );
 
     const fetchMessages = async () => {
-      await dispatch(getMessages(workspaceId, channelId));
+      await dispatch(getMessages({ channelId }));
       scrollToBottom();
     };
 
@@ -82,12 +82,8 @@ function Channel() {
     channelId,
   ]);
 
-  // useEffect(() => {
-  //   msgContainerRef.current.scrollTo({ top: 0 });
-  // });
-
   const handleSend = async (text) => {
-    messages.createMessage(workspaceId, channelId)({ body: text });
+    messages.createMessage(workspaceId, { channelId })({ body: text });
   };
 
   const channelName = channel.name || '';
