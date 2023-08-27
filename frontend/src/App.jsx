@@ -18,6 +18,7 @@ import NewWorkspace from 'components/NewWorkspace';
 import WorkspaceIndex from 'components/WorkspaceIndex';
 import Channel from 'components/Channel';
 import Chat from 'components/Chat';
+import NewChat from 'components/NewChat';
 
 import './App.scss';
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
           {
             path: 'channels/:channelId',
             element: <Channel />,
+          },
+          {
+            path: 'chats/new',
+            element: <NewChat />,
           },
           {
             path: 'chats/:chatId',

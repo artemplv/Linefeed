@@ -2,9 +2,9 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import {
-  useParams,
-} from 'react-router-dom';
+
+import { useParams } from 'react-router-dom';
+
 import {
   useSelector,
   useDispatch,
@@ -14,11 +14,15 @@ import {
   wsConsumer,
   messages,
 } from 'api';
+
 import {
   getMessages,
   setMessage,
   removeMessage,
 } from 'store/actions/messages';
+
+import { chatById } from 'store/selectors/chats';
+import { userById } from 'store/selectors/users';
 
 import MessagePane from 'components/shared/MessagePane';
 import MessagesContainer from './MessagesContainer';
@@ -34,6 +38,9 @@ function Chat() {
 
   const msgContainerRef = useRef(null);
   const currentUserId = useSelector((state) => state.session?.user?.id);
+
+  const chat = useSelector((state) => chatById(state, chatId));
+  const interlocutor = useSelector((state) => userById(state, chat.interlocutorId));
 
   const scrollToBottom = () => {
     msgContainerRef.current.scrollTo(0, msgContainerRef.current.scrollHeight);
@@ -82,6 +89,9 @@ function Chat() {
     messages.createMessage(workspaceId, { chatId })({ body: text });
   };
 
+  const placeholder = interlocutor.id === currentUserId
+    ? 'Jot something down' : `Message ${interlocutor.fullName}`;
+
   return (
     <div className="chat-page">
       <div className="chat-page-content">
@@ -93,7 +103,7 @@ function Chat() {
         />
 
         <MessagePane
-          placeholder={`Message ${chatId}`}
+          placeholder={placeholder}
           onSend={handleSend}
         />
       </div>

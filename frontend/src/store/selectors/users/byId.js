@@ -5,7 +5,15 @@ import {
 const byId = createSelector(
   (state) => state.users.byId,
   (_, userId) => userId,
-  (collection, id) => collection[id] || {},
+  (collection, id) => {
+    const user = collection[id];
+
+    if (user) {
+      user.fullName = `${user.firstName || ''} ${user.lastName || ''}`.trim();
+    }
+
+    return user || {};
+  },
 );
 
 export default byId;

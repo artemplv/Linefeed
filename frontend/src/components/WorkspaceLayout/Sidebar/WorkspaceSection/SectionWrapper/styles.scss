@@ -12,6 +12,12 @@
   position: relative;
   border-top: 1px solid rgb(82,38,83);
   border-bottom: 1px solid rgb(82,38,83);
+
+  .workspace-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
 
   &.workspace-sidebar-placeholder-wrapper {

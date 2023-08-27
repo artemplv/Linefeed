@@ -9,6 +9,7 @@ function MessagePane(props) {
   const {
     placeholder,
     onSend,
+    disabled,
   } = props;
 
   const [inputValue, setInputValue] = useState('');
@@ -40,6 +41,7 @@ function MessagePane(props) {
         onChange={handleChange}
         placeholder={placeholder}
         onKeyDown={handleEnter}
+        disabled={disabled}
       />
 
       <button
@@ -56,11 +58,13 @@ function MessagePane(props) {
 
 MessagePane.defaultProps = {
   placeholder: 'Jot something down',
+  disabled: false,
 };
 
 MessagePane.propTypes = {
   placeholder: PropTypes.string,
   onSend: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default MessagePane;

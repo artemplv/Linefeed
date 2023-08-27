@@ -15,8 +15,6 @@ function Heading(props) {
   const chat = useSelector((state) => chatById(state, chatId));
   const interlocutor = useSelector((state) => userById(state, chat.interlocutorId));
 
-  const interlocutorName = `${interlocutor?.firstName || ''} ${interlocutor?.lastName || ''}`.trim();
-
   return (
     <div className="chat-heading">
       <div className="subheading no-margin">
@@ -25,7 +23,7 @@ function Heading(props) {
           size="s"
         />
         <span>
-          {interlocutorName}
+          {interlocutor.fullName}
         </span>
       </div>
     </div>

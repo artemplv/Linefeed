@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { workspaceById } from 'store/selectors/workspaces';
 
 import Dropdown from 'components/shared/Dropdown';
+import NewMessageButton from 'components/shared/NewMessageButton';
 import SectionWrapper from './SectionWrapper';
 
 function WorkspaceSection(props) {
@@ -26,18 +27,22 @@ function WorkspaceSection(props) {
     <SectionWrapper>
       {
         workspace && (
-          <Dropdown
-            open={dropdownOpen}
-            toggle={toggleDropdown}
-            triggerElement={<h4>{workspace.name}</h4>}
-          >
-            <Dropdown.MenuLink to={`/workspaces/${workspaceId}`}>
-              Workspace homepage
-            </Dropdown.MenuLink>
-            <Dropdown.MenuLink to="/workspaces">
-              Switch workspaces
-            </Dropdown.MenuLink>
-          </Dropdown>
+          <div className="workspace-wrapper">
+            <Dropdown
+              open={dropdownOpen}
+              toggle={toggleDropdown}
+              triggerElement={<h4>{workspace.name}</h4>}
+            >
+              <Dropdown.MenuLink to={`/workspaces/${workspaceId}`}>
+                Workspace homepage
+              </Dropdown.MenuLink>
+              <Dropdown.MenuLink to="/workspaces">
+                Switch workspaces
+              </Dropdown.MenuLink>
+            </Dropdown>
+
+            <NewMessageButton />
+          </div>
         )
       }
     </SectionWrapper>
