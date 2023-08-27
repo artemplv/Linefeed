@@ -1,0 +1,21 @@
+@import 'assets/variables';
+
+.chat-main-info {
+  padding: 10px 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $background-flat;
+
+  .interlocutor-name {
+    font-size: $subheading-font-size;
+    font-weight: 500;
+  }
+  
+  .chat-description {
+    display: block;
+    color: $text-descriptive;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}

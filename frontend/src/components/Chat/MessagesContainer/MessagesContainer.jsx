@@ -8,7 +8,7 @@ import {
 } from 'store/selectors/chats';
 
 import Message from 'components/shared/Message';
-// import ChatInfo from '../ChatInfo';
+import ChatInfo from '../ChatInfo';
 
 function MessagesContainer(props) {
   const {
@@ -20,9 +20,9 @@ function MessagesContainer(props) {
 
   return (
     <div className="messages-container" ref={msgContainerRef}>
-      {/* {<ChatInfo
-        channelId={channelId}
-      />} */}
+      <ChatInfo
+        chatId={chatId}
+      />
 
       {
         messageIds.map((messageId) => (
