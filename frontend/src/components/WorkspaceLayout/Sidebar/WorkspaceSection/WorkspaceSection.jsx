@@ -33,7 +33,10 @@ function WorkspaceSection(props) {
               toggle={toggleDropdown}
               triggerElement={<h4>{workspace.name}</h4>}
             >
-              <Dropdown.MenuLink to={`/workspaces/${workspaceId}`}>
+              <Dropdown.MenuLink
+                to={`/workspaces/${workspaceId}`}
+                onClick={toggleDropdown}
+              >
                 Workspace homepage
               </Dropdown.MenuLink>
               <Dropdown.MenuLink to="/workspaces">

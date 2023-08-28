@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ClickAwayListener from 'react-click-away-listener';
+
 import Icon from 'components/shared/Icon';
 
 function Dropdown(props) {
@@ -28,9 +30,11 @@ function Dropdown(props) {
         </button>
         {
           open && (
-            <div className={`dropdown-menu stick-${menuStickTo}`}>
-              {children}
-            </div>
+            <ClickAwayListener onClickAway={toggle}>
+              <div className={`dropdown-menu stick-${menuStickTo}`}>
+                {children}
+              </div>
+            </ClickAwayListener>
           )
         }
       </div>
