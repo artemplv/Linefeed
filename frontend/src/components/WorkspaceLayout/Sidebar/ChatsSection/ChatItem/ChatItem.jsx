@@ -1,6 +1,8 @@
 import React, {
   useEffect,
 } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   useDispatch,
   useSelector,
@@ -58,5 +60,10 @@ function ChatItem(props) {
     </SidebarLink>
   );
 }
+
+ChatItem.propTypes = {
+  chatId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default ChatItem;

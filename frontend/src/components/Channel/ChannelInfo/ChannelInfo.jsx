@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   useDispatch,
   useSelector,
@@ -55,5 +57,9 @@ function ChannelInfo(props) {
     </div>
   );
 }
+
+ChannelInfo.propTypes = {
+  channelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default ChannelInfo;

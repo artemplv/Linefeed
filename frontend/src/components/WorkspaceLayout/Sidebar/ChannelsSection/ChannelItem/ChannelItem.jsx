@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SidebarLink from 'components/WorkspaceLayout/Sidebar/SidebarLink';
 import Icon from 'components/shared/Icon';
@@ -20,5 +21,11 @@ function ChannelItem(props) {
     </SidebarLink>
   );
 }
+
+ChannelItem.propTypes = {
+  channelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default ChannelItem;

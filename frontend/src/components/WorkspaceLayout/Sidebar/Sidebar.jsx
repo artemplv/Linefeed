@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   WORKSPACE_SIDEBAR_SECTION,
@@ -45,5 +46,16 @@ function Sidebar(props) {
     </div>
   );
 }
+
+Sidebar.defaultProps = {
+  creationView: false,
+  sections: [],
+};
+
+Sidebar.propTypes = {
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  sections: PropTypes.arrayOf(PropTypes.string),
+  creationView: PropTypes.bool,
+};
 
 export default Sidebar;

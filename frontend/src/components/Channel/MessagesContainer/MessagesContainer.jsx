@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   useSelector,
 } from 'react-redux';
@@ -35,5 +37,13 @@ function MessagesContainer(props) {
     </div>
   );
 }
+
+MessagesContainer.propTypes = {
+  channelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  msgContainerRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]).isRequired,
+};
 
 export default MessagesContainer;
