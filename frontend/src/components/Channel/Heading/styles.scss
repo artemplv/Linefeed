@@ -22,4 +22,20 @@
       margin-right: 2px;
     }
   }
+
+  .dropdown .trigger-button:hover {
+    background: inherit;
+  }
+
+  .self-user-hint {
+    color: $text-descriptive;
+    font-size: 0.85rem;
+  }
+
+  .channel-member-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2px 15px;
+  }
 }

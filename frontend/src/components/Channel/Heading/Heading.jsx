@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import { workspaceById } from 'store/selectors/workspaces';
 
 import Icon from 'components/shared/Icon';
+import Dropdown from 'components/shared/Dropdown';
+import ChannelMember from './ChannelMember';
 
 function Heading(props) {
   const {
@@ -12,8 +16,15 @@ function Heading(props) {
     workspaceId,
   } = props;
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const workspace = useSelector((state) => workspaceById(state, workspaceId));
+
   const numOfMembers = workspace?.users?.length || 0;
+
+  const toggleDropdown = () => {
+    setDropdownOpen((value) => !value);
+  };
 
   return (
     <div className="channel-heading">
@@ -28,9 +39,23 @@ function Heading(props) {
       </div>
 
       <div>
-        <span className="members-count">
-          {`${numOfMembers} ${numOfMembers === 1 ? 'member' : 'members'}`}
-        </span>
+        <Dropdown
+          open={dropdownOpen}
+          toggle={toggleDropdown}
+          menuStickTo="right"
+          triggerElement={(
+            <span className="members-count">
+              {`${numOfMembers} ${numOfMembers === 1 ? 'member' : 'members'}`}
+            </span>
+          )}
+        >
+          {workspace?.users?.map((userId) => (
+            <ChannelMember
+              key={userId}
+              userId={userId}
+            />
+          ))}
+        </Dropdown>
       </div>
     </div>
   );

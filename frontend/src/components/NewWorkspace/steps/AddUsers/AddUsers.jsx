@@ -74,7 +74,7 @@ function AddUsers(props) {
         Who else is on the team?
       </h2>
 
-      <div className="flex-row">
+      <div className="flex-row gap-1">
         <TextInput
           className="no-margin"
           value={inputValue}
@@ -104,7 +104,7 @@ function AddUsers(props) {
         }
       </ul>
 
-      <div className="flex-row">
+      <div className="flex-row gap-1">
         <form
           className="w-auto"
           onSubmit={handleSubmit}

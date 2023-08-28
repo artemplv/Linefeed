@@ -36,7 +36,7 @@ function User() {
         triggerElement={<Avatar src={userPic} size="s" />}
         menuStickTo="right"
       >
-        <div className="dropdown-menu-user-data flex-row">
+        <div className="dropdown-menu-user-data flex-row gap-1">
           <Avatar
             src={userPic}
           />
