@@ -1,6 +1,7 @@
 import csrfFetch from 'api';
 import storeCurrentUser from 'utils/storeCurrentUser';
-import removeCurrentUser from './removeCurrentUser';
+
+import { LOGOUT_USER } from 'store/actionTypes/session';
 
 const logout = () => async (dispatch) => {
   await csrfFetch('/api/session', {
@@ -8,7 +9,7 @@ const logout = () => async (dispatch) => {
   });
 
   storeCurrentUser(null);
-  dispatch(removeCurrentUser());
+  dispatch({ type: LOGOUT_USER });
 };
 
 export default logout;

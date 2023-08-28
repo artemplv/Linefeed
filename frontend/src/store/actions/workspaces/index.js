@@ -6,6 +6,7 @@ import createWorkspace from './createWorkspace';
 import updateWorkspace from './updateWorkspace';
 import getWorkspaceUsers from './getWorkspaceUsers';
 import searchWorkspace from './searchWorkspace';
+import clearWorkspace from './clearWorkspace';
 
 const searchWorkspaceDebounced = debounceThunkAction(searchWorkspace, 600);
 
@@ -17,4 +18,5 @@ export {
   getWorkspaceUsers,
   searchWorkspace,
   searchWorkspaceDebounced,
+  clearWorkspace,
 };

@@ -1,6 +1,7 @@
 import {
   SET_WORKSPACE,
   SET_WORKSPACES,
+  CLEAR_WORKSPACE,
 } from 'store/actionTypes/workspaces';
 
 const initialState = {
@@ -23,6 +24,8 @@ const workspacesReducer = (state = initialState, action) => {
         ...state,
         byId: action.payload,
       };
+    case CLEAR_WORKSPACE:
+      return initialState;
     default:
       return state;
   }

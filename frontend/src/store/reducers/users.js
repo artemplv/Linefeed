@@ -7,6 +7,8 @@ import {
   SET_CHAT,
 } from 'store/actionTypes/chats';
 
+import { CLEAR_WORKSPACE } from 'store/actionTypes/workspaces';
+
 const initialState = {
   byId: {},
   // allIds: {},
@@ -42,6 +44,8 @@ const usersReducer = (state = initialState, action) => {
           [action.interlocutor.id]: action.interlocutor,
         },
       };
+    case CLEAR_WORKSPACE:
+      return initialState;
     default:
       return state;
   }

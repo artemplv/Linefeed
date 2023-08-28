@@ -8,7 +8,10 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { getWorkspace } from 'store/actions/workspaces';
+import {
+  getWorkspace,
+  clearWorkspace,
+} from 'store/actions/workspaces';
 
 import { DEFAULT_SIDEBAR_SECTIONS } from 'constants/sidebar';
 
@@ -27,6 +30,10 @@ function WorkspaceLayout() {
     if (workspaceId) {
       dispatch(getWorkspace(workspaceId));
     }
+
+    return () => {
+      dispatch(clearWorkspace());
+    };
   }, [workspaceId]);
 
   return (
