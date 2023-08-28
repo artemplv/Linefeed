@@ -28,7 +28,7 @@ function ChatsSection(props) {
   }, [workspaceId]);
 
   return (
-    <div style={{ padding: '1rem', paddingTop: 5, paddingBottom: '2rem' }}>
+    <div className="chats-list">
       <h4>Direct messages</h4>
       {
         chats.map((chat) => (

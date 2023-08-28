@@ -9,6 +9,7 @@ import {
 } from 'react-redux';
 
 import { getChat } from 'store/actions/chats';
+import { openModal } from 'store/actions/modal';
 
 import { chatById } from 'store/selectors/chats';
 import { userById } from 'store/selectors/users';
@@ -39,6 +40,11 @@ function ChatItem(props) {
   const chatPic = interlocutor?.pictureUrl;
   const chatName = `${interlocutor?.firstName || ''} ${interlocutor?.lastName || ''}`.trim();
 
+  const handleDelete = (event) => {
+    event.stopPropagation();
+    dispatch(openModal('delete-chat', { chatId, chatName }));
+  };
+
   return (
     <SidebarLink
       to={`/workspaces/${workspaceId}/chats/${chatId}`}
@@ -57,6 +63,14 @@ function ChatItem(props) {
           </span>
         )
       }
+
+      <button
+        type="button"
+        className="delete-button"
+        onMouseDown={handleDelete}
+      >
+        X
+      </button>
     </SidebarLink>
   );
 }

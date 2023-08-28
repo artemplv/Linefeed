@@ -12,6 +12,7 @@ import EditChannelDescription from 'components/Channel/modals/EditDescription';
 import DeleteChannel from 'components/Channel/modals/DeleteChannel';
 import CreateChannel from 'components/Channel/modals/CreateChannel';
 import DeleteMessage from 'components/modals/DeleteMessage';
+import DeleteChat from 'components/modals/DeleteChat';
 
 function Modal() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function Modal() {
       break;
     case 'delete-message':
       component = <DeleteMessage />;
+      break;
+    case 'delete-chat':
+      component = <DeleteChat />;
       break;
     default:
       return null;
