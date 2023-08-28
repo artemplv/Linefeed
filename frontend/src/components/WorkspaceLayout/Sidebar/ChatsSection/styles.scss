@@ -32,4 +32,21 @@
       }
     }
   }
+
+  button.add-users-button {
+    width: auto;
+    color: #c5b8c6;
+    padding: 0;
+    padding-left: 1.2rem;
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    background: transparent;
+
+    &:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+  }
 }

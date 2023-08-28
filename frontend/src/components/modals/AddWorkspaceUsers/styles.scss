@@ -1,0 +1,22 @@
+.add-users-modal-content {
+  width: 500px;
+
+  button {
+    max-width: 100px;
+    margin-bottom: 0;
+  }
+
+  .add-user-button {
+    max-width: 100px;
+  }
+
+  .users-to-add-list {
+    list-style: none;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
