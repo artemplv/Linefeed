@@ -1,5 +1,7 @@
 import React, {
   useState,
+  useRef,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,7 +14,15 @@ function MessagePane(props) {
     disabled,
   } = props;
 
+  const inputRef = useRef();
   const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    // TODO: fix this workaround
+    setTimeout(() => {
+      inputRef?.current.focus();
+    }, 50);
+  }, []);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -42,6 +52,7 @@ function MessagePane(props) {
         placeholder={placeholder}
         onKeyDown={handleEnter}
         disabled={disabled}
+        ref={inputRef}
       />
 
       <button
