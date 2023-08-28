@@ -21,11 +21,7 @@ function SidebarLink(props) {
 
 SidebarLink.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    PropTypes.instanceOf(Element),
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default SidebarLink;
