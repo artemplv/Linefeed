@@ -43,7 +43,6 @@ const router = createBrowserRouter([
   {
     path: '/workspaces/:workspaceId',
     Component: withAuth(WorkspaceLayout),
-    // errorElement: <h2>Error</h2>,
     children: [
       {
         errorElement: <h2>Error</h2>,

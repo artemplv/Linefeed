@@ -40,13 +40,14 @@ function Dropdown(props) {
 
 Dropdown.defaultProps = {
   menuStickTo: 'left',
+  children: null,
 };
 
 Dropdown.propTypes = {
   open: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
   triggerElement: PropTypes.element.isRequired,
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.node,
   menuStickTo: PropTypes.oneOf(['left', 'right']),
 };
 
