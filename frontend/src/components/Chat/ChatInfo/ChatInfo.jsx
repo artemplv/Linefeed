@@ -30,7 +30,7 @@ function ChatInfo(props) {
 
   return (
     <div className="chat-main-info">
-      <div className="flex-row align-center">
+      <div className="flex-row align-center gap-1">
         <Avatar
           src={interlocutor?.pictureUrl}
           size="l"
