@@ -2,7 +2,7 @@
 export const PERSONAL_LINKS_LIST = [
   {
     id: 'github',
-    url: 'https://github.com/artemplv/slack-clone',
+    url: 'https://github.com/artemplv/Linefeed',
     text: 'GitHub',
   },
   {
