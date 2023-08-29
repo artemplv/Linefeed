@@ -50,6 +50,30 @@ function HomePage() {
             </div>
           </div>
         </section>
+
+        <section className="pre-footer">
+          <div className="home-content-container">
+            <h3 className="heading">
+              See all you can accomplish with Linefeed
+            </h3>
+
+            <div className="flex-row gap-05 justify-center">
+              <Link
+                className="button light uppercase"
+                to="/signup"
+              >
+                Sign Up
+              </Link>
+
+              <Link
+                className="button secondary uppercase"
+                to="/signin"
+              >
+                Sign In
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );
