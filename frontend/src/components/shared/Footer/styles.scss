@@ -1,0 +1,64 @@
+@import 'assets/variables';
+
+.main-footer {
+  width: 100%;
+  background: inherit;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .logo-links-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .attribution-row {
+    text-align: center;
+    color: $text-descriptive;
+  }
+
+  @media screen and (min-width: 48rem) {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+
+  @media screen and (min-width: 84rem) {
+    max-width: 76.875rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    padding-top: 2rem;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    font-size: .875rem;
+
+    ul {
+      padding: 0;
+      display: flex;
+      flex: 1;
+    }
+
+    li {
+      list-style-type: none;
+      padding: 0.25rem 0.75rem;
+      font-size: 1rem;
+    }
+
+    a, a:hover {
+      color: $text-main;
+    }
+  }  
+}

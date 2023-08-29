@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from 'components/shared/Header';
+import Footer from 'components/shared/Footer';
 
 function HomePage() {
   return (
@@ -75,6 +76,8 @@ function HomePage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }
