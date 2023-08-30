@@ -37,4 +37,12 @@
       }
     }
   }
+
+  .pre-footer {
+    background: $background-primary-dark;
+    border: none;
+    clip-path: ellipse(75% 100% at center top);
+    height: 100px;
+    padding: 2rem 0;
+  }
 }

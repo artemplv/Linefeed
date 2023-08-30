@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import handImage from 'assets/images/waving-hand.gif';
 
 import Header from 'components/shared/Header';
+import Footer from 'components/shared/Footer';
 import WorkspacesList from './WorkspacesList';
 import CreateWorkspaceBanner from './CreateWorkspaceBanner';
 
@@ -37,7 +38,11 @@ function WorkspacesPage() {
             </div>
           </div>
         </section>
+
+        <section className="pre-footer" />
       </main>
+
+      <Footer />
     </>
   );
 }
