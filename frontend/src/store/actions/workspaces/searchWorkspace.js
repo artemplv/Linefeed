@@ -1,4 +1,5 @@
 import csrfFetch from 'api';
+import { callAlert } from 'components/Alert';
 
 import setUsers from 'store/actions/users/setUsers';
 import setChannels from 'store/actions/channels/setChannels';
@@ -8,18 +9,23 @@ const searchWorkspace = (
   searchQuery,
   callback = () => {},
 ) => async (dispatch) => {
-  const url = `/api/workspaces/${workspaceId}/search?query=${searchQuery}`;
+  try {
+    const url = `/api/workspaces/${workspaceId}/search?query=${searchQuery}`;
 
-  const response = await csrfFetch(url);
+    const response = await csrfFetch(url);
 
-  const body = await response.json();
+    const body = await response.json();
 
-  dispatch(setUsers(body.users));
-  dispatch(setChannels(body.channels));
+    dispatch(setUsers(body.users));
+    dispatch(setChannels(body.channels));
 
-  callback(body);
+    callback(body);
 
-  return body;
+    return body;
+  } catch (err) {
+    callAlert.error("Couldn't search");
+    return null;
+  }
 };
 
 export default searchWorkspace;

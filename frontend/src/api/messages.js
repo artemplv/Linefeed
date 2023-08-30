@@ -1,4 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import { callAlert } from 'components/Alert';
+
 import csrfFetch from './csrfFetch';
 
 export const createMessage = (workspaceId, { channelId, chatId }) => async (payload = {}) => {
@@ -10,17 +12,28 @@ export const createMessage = (workspaceId, { channelId, chatId }) => async (payl
     url = `/api/workspaces/${workspaceId}/chats/${chatId}/messages`;
   }
 
-  const response = await csrfFetch(url, {
-    method: 'POST',
-    body: JSON.stringify(payload),
-  });
+  try {
+    const response = await csrfFetch(url, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
 
-  const body = await response.json();
-  return body;
+    const body = await response.json();
+    return body;
+  } catch (err) {
+    callAlert.error("Couldn't send message");
+    return null;
+  }
 };
 
 export const deleteMessage = async (messageId) => {
-  await csrfFetch(`/api/messages/${messageId}`, {
-    method: 'DELETE',
-  });
+  try {
+    await csrfFetch(`/api/messages/${messageId}`, {
+      method: 'DELETE',
+    });
+
+    callAlert.success('Message deleted');
+  } catch (err) {
+    callAlert.error("Couldn't delete message");
+  }
 };

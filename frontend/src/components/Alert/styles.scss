@@ -1,0 +1,24 @@
+@import 'assets/variables';
+
+.alert-box {
+  width: fit-content;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 2px 15px;
+  border-radius: 4px;
+
+  &.alert-success {
+    background-color: $success;
+  }
+
+  &.alert-error {
+    background-color: $text-error;
+  }
+
+  .alert-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+  }
+}
