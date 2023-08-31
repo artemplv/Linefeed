@@ -13,7 +13,7 @@ class Chat < ApplicationRecord
   validates :workspace_id, :interlocutor_1_id, :interlocutor_2_id,
     presence: true
   
-  validates_uniqueness_of :interlocutor_1_id, :scope => [:interlocutor_2_id]
+  validates_uniqueness_of :interlocutor_1_id, :scope => [:interlocutor_2_id, :workspace_id]
 
   belongs_to :interlocutor_1,
     class_name: 'User'
