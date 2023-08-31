@@ -13,6 +13,7 @@ import DeleteChannel from 'components/Channel/modals/DeleteChannel';
 import CreateChannel from 'components/Channel/modals/CreateChannel';
 import DeleteMessage from 'components/modals/DeleteMessage';
 import DeleteChat from 'components/modals/DeleteChat';
+import DeleteWorkspace from 'components/modals/DeleteWorkspace';
 import AddWorkspaceUsers from 'components/modals/AddWorkspaceUsers';
 
 function Modal() {
@@ -43,6 +44,9 @@ function Modal() {
       break;
     case 'delete-chat':
       component = <DeleteChat />;
+      break;
+    case 'delete-workspace':
+      component = <DeleteWorkspace />;
       break;
     case 'add-workspace-users':
       component = <AddWorkspaceUsers />;

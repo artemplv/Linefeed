@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     
     resource :session, only: [:show, :create, :destroy]
     
-    resources :workspaces, only: [:index, :show, :update, :create] do
+    resources :workspaces, only: [:index, :show, :update, :create, :destroy] do
       resources :users, only: [:index]
       resources :channels, only: [:index, :create] do
         resources :messages, only: [:create]

@@ -1,6 +1,8 @@
+/* eslint-disable no-case-declarations */
 import {
   SET_WORKSPACE,
   SET_WORKSPACES,
+  REMOVE_WORKSPACE,
   CLEAR_WORKSPACE,
 } from 'store/actionTypes/workspaces';
 
@@ -24,6 +26,14 @@ const workspacesReducer = (state = initialState, action) => {
         ...state,
         byId: action.payload,
       };
+    case REMOVE_WORKSPACE:
+      const newState = {
+        ...state,
+        byId: { ...state.byId },
+      };
+
+      delete newState.byId[action.payload];
+      return newState;
     case CLEAR_WORKSPACE:
       return initialState;
     default:

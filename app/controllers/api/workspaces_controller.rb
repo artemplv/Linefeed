@@ -64,6 +64,16 @@ class Api::WorkspacesController < ApplicationController
     render 'api/workspaces/search'
   end
 
+  def destroy
+    workspace = Workspace.find(params[:id])
+
+    if workspace.destroy
+      render json: { message: 'success' }
+    else
+      render 'api/errors/validation_errors', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def workspace_params

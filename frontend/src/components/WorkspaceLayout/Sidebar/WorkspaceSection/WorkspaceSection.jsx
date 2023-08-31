@@ -2,7 +2,13 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+
+import { openModal } from 'store/actions/modal';
 
 import { workspaceById } from 'store/selectors/workspaces';
 
@@ -15,13 +21,21 @@ function WorkspaceSection(props) {
     workspaceId,
   } = props;
 
+  const dispatch = useDispatch();
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const workspace = useSelector((state) => workspaceById(state, workspaceId));
+  const sessionUserId = useSelector((state) => state.session.user?.id);
 
   const toggleDropdown = () => {
     setDropdownOpen((value) => !value);
   };
 
-  const workspace = useSelector((state) => workspaceById(state, workspaceId));
+  const handleDelete = () => {
+    setDropdownOpen(false);
+    dispatch(openModal('delete-workspace', { workspaceId, workspaceName: workspace.name }));
+  };
 
   return (
     <SectionWrapper>
@@ -39,6 +53,15 @@ function WorkspaceSection(props) {
               >
                 Workspace homepage
               </Dropdown.MenuLink>
+              {
+                sessionUserId === workspace.ownerId && (
+                  <Dropdown.MenuButton
+                    onClick={handleDelete}
+                  >
+                    Delete this workspace
+                  </Dropdown.MenuButton>
+                )
+              }
               <Dropdown.MenuLink to="/workspaces">
                 Switch workspaces
               </Dropdown.MenuLink>
