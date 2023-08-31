@@ -15,6 +15,7 @@ import DeleteMessage from 'components/modals/DeleteMessage';
 import DeleteChat from 'components/modals/DeleteChat';
 import DeleteWorkspace from 'components/modals/DeleteWorkspace';
 import AddWorkspaceUsers from 'components/modals/AddWorkspaceUsers';
+import EditWorkspace from 'components/modals/EditWorkspace';
 
 function Modal() {
   const dispatch = useDispatch();
@@ -50,6 +51,9 @@ function Modal() {
       break;
     case 'add-workspace-users':
       component = <AddWorkspaceUsers />;
+      break;
+    case 'edit-workspace':
+      component = <EditWorkspace />;
       break;
     default:
       return null;

@@ -32,6 +32,11 @@ function WorkspaceSection(props) {
     setDropdownOpen((value) => !value);
   };
 
+  const handleEdit = () => {
+    setDropdownOpen(false);
+    dispatch(openModal('edit-workspace', { workspaceId }));
+  };
+
   const handleDelete = () => {
     setDropdownOpen(false);
     dispatch(openModal('delete-workspace', { workspaceId, workspaceName: workspace.name }));
@@ -56,9 +61,18 @@ function WorkspaceSection(props) {
               {
                 sessionUserId === workspace.ownerId && (
                   <Dropdown.MenuButton
+                    onClick={handleEdit}
+                  >
+                    Edit workspace
+                  </Dropdown.MenuButton>
+                )
+              }
+              {
+                sessionUserId === workspace.ownerId && (
+                  <Dropdown.MenuButton
                     onClick={handleDelete}
                   >
-                    Delete this workspace
+                    Delete workspace
                   </Dropdown.MenuButton>
                 )
               }
