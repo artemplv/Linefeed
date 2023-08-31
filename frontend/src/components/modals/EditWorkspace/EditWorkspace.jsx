@@ -57,7 +57,7 @@ function EditWorkspace() {
       return;
     }
 
-    dispatch(updateWorkspace(workspaceId)({
+    dispatch(updateWorkspace(workspaceId, true)({
       name: inputValue,
     }));
     dispatch(closeModal());
