@@ -42,6 +42,16 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     dependent: :nullify
 
+  has_many :chats_1,
+    class_name: 'Chat',
+    foreign_key: :interlocutor_1_id,
+    dependent: :destroy
+
+  has_many :chats_2,
+    class_name: 'Chat',
+    foreign_key: :interlocutor_2_id,
+    dependent: :destroy
+
   has_many :messages,
     class_name: 'Message',
     foreign_key: :author_id,

@@ -8,6 +8,8 @@ require "open-uri"
   WorkspaceUser.destroy_all
   Channel.destroy_all
   ChannelMessage.destroy_all
+  Chat.destroy_all
+  ChatMessage.destroy_all
   Message.destroy_all
 
   puts "Resetting primary keys..."
@@ -15,6 +17,7 @@ require "open-uri"
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('workspaces')
   ApplicationRecord.connection.reset_pk_sequence!('channels')
+  ApplicationRecord.connection.reset_pk_sequence!('chats')
   ApplicationRecord.connection.reset_pk_sequence!('messages')
 
   puts "Creating users..."
@@ -136,10 +139,10 @@ require "open-uri"
     filename: 'middle-earth-pic.jpg'
   )
 
-  7.times do |i|
+  8.times do |i|
     WorkspaceUser.create!({
       workspace_id: 1,
-      user_id: i + 2,
+      user_id: i + 1,
     });
   end
 
