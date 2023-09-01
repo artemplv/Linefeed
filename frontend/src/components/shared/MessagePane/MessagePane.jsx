@@ -20,7 +20,7 @@ function MessagePane(props) {
   useEffect(() => {
     // TODO: fix this workaround
     setTimeout(() => {
-      inputRef?.current.focus();
+      inputRef?.current?.focus();
     }, 50);
   }, []);
 
