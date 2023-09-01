@@ -62,11 +62,16 @@ function Heading(props) {
   );
 }
 
+Heading.defaultProps = {
+  channel: { name: '' },
+  workspaceId: null,
+};
+
 Heading.propTypes = {
   channel: PropTypes.shape({
     name: PropTypes.string,
-  }).isRequired,
-  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }),
+  workspaceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Heading;
