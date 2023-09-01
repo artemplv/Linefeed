@@ -18,6 +18,7 @@ function ChannelInfo(props) {
 
   const dispatch = useDispatch();
   const channel = useSelector((state) => channelById(state, channelId));
+  const sessionUserId = useSelector((state) => state.session.user?.id);
 
   const onEditDescription = () => {
     dispatch(openModal('edit-channel-description'));
@@ -47,13 +48,17 @@ function ChannelInfo(props) {
       >
         Edit description
       </Button>
-      <Button
-        variant="secondary"
-        className="delete-channel"
-        onClick={onDelete}
-      >
-        Delete channel
-      </Button>
+      {
+        channel.ownerId === sessionUserId && (
+          <Button
+            variant="secondary"
+            className="delete-channel"
+            onClick={onDelete}
+          >
+            Delete channel
+          </Button>
+        )
+      }
     </div>
   );
 }
