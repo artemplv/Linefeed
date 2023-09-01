@@ -30,8 +30,12 @@ function Heading(props) {
   );
 }
 
+Heading.defaultProps = {
+  chatId: null,
+};
+
 Heading.propTypes = {
-  chatId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  chatId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Heading;
