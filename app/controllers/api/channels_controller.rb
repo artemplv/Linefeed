@@ -2,6 +2,7 @@ class Api::ChannelsController < ApplicationController
   wrap_parameters include: Channel.attribute_names
 
   before_action :require_logged_in
+  before_action :require_workspace_membership, except: [:update, :destroy]
 
   def create
     workspace_id = params[:workspace_id]

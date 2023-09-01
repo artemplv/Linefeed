@@ -5,6 +5,7 @@ import React, {
 import {
   Outlet,
   useParams,
+  useNavigate,
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -25,11 +26,19 @@ function WorkspaceLayout() {
 
   const { workspaceId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (workspaceId) {
-      dispatch(getWorkspace(workspaceId));
-    }
+    const fetchWorkspace = async (id) => {
+      if (id) {
+        const res = await dispatch(getWorkspace(id));
+        if (!res) {
+          navigate('/404', { replace: true });
+        }
+      }
+    };
+
+    fetchWorkspace(workspaceId);
 
     return () => {
       dispatch(clearWorkspace());

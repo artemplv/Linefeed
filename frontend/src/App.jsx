@@ -19,6 +19,7 @@ import WorkspaceIndex from 'components/WorkspaceIndex';
 import Channel from 'components/Channel';
 import Chat from 'components/Chat';
 import NewChat from 'components/NewChat';
+import NotFoundPage from 'components/NotFoundPage';
 
 import './App.scss';
 
@@ -75,10 +76,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: '*',
-  //   element: <h2>404 Not Found</h2>,
-  // },
+  {
+    path: '404',
+    element: <NotFoundPage />,
+  },
 ]);
 
 function App() {

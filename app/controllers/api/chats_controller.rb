@@ -2,6 +2,7 @@ class Api::ChatsController < ApplicationController
   wrap_parameters include: Chat.attribute_names + ['interlocutor']
 
   before_action :require_logged_in
+  before_action :require_workspace_membership, except: [:show, :destroy]
   before_action :ensure_user_self_chat, only: [:index]
 
   def show

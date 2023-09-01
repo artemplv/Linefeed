@@ -28,6 +28,19 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def require_workspace_membership
+    workspace_id = params[:workspace_id] || params[:id]
+    
+    workspace = Workspace
+      .joins(:workspace_users)
+      .where('workspaces.id = ?', workspace_id)
+      .where('workspace_users.user_id = ?', current_user.id)
+
+    if workspace.blank?
+      render json: { message: 'Unauthorized' }, status: :unauthorized
+    end
+  end
+
   def from_template(template, locals = {})
     JSON.parse(self.class.render(:json, template: template, locals: locals))
   end

@@ -2,6 +2,7 @@ class Api::WorkspacesController < ApplicationController
   wrap_parameters include: Workspace.attribute_names
 
   before_action :require_logged_in
+  before_action :require_workspace_membership, except: [:index, :create]
 
   def index
     @workspaces = current_user.workspaces.includes(:workspace_users, :channels)

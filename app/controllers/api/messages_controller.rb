@@ -2,6 +2,7 @@ class Api::MessagesController < ApplicationController
   wrap_parameters include: Message.attribute_names
 
   before_action :require_logged_in
+  before_action :require_workspace_membership, only: [:create]
 
   def index
     if params[:channel_id]
