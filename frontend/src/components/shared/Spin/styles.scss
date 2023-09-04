@@ -1,0 +1,39 @@
+@import 'assets/variables';
+
+.spin-container {
+  position: relative;
+
+  .spin-spinner-wrapper {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .spin-loading-icon {
+    font-size: 2rem;
+    color: $text-main;
+  }
+
+  &.spinning {
+    .spin-content {
+      opacity: 65%;
+      pointer-events: none;
+    }
+
+    .spin-spinner-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+    }
+
+    .spin-loading-icon {
+      animation-name: spin;
+      animation-duration: 4000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+}

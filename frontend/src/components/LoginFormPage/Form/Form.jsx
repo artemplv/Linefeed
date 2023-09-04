@@ -9,6 +9,7 @@ import { login } from 'store/actions/session';
 
 import TextInput from 'components/shared/TextInput';
 import Button from 'components/shared/Button';
+import Spin from 'components/shared/Spin';
 
 const demoUserCreds = { credential: 'johndoe@example.com', password: 'password' };
 
@@ -16,6 +17,7 @@ function Form() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,6 +77,8 @@ function Form() {
       return;
     }
 
+    setLoading(true);
+
     const body = {
       credential: email,
       password,
@@ -90,6 +94,8 @@ function Form() {
       setErrors({
         password: errorMessage,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -102,46 +108,53 @@ function Form() {
   };
 
   const loginDemoUser = async () => {
+    setLoading(true);
+
     await dispatch(login(demoUserCreds));
+
+    setLoading(false);
+
     navigate('/workspaces');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextInput
-        name="email"
-        type="email"
-        value={email}
-        onChange={handleFieldChange(setEmail)}
-        placeholder="name@work-email.com"
-        onBlur={validateField}
-        error={errors.email}
-      />
+    <Spin spinning={loading}>
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          name="email"
+          type="email"
+          value={email}
+          onChange={handleFieldChange(setEmail)}
+          placeholder="name@work-email.com"
+          onBlur={validateField}
+          error={errors.email}
+        />
 
-      <TextInput
-        name="password"
-        type="password"
-        value={password}
-        onChange={handleFieldChange(setPassword)}
-        placeholder="Password"
-        onBlur={validateField}
-        error={errors.password}
-      />
+        <TextInput
+          name="password"
+          type="password"
+          value={password}
+          onChange={handleFieldChange(setPassword)}
+          placeholder="Password"
+          onBlur={validateField}
+          error={errors.password}
+        />
 
-      <Button
-        submit
-        variant="dark"
-      >
-        Sign In With Email
-      </Button>
+        <Button
+          submit
+          variant="dark"
+        >
+          Sign In With Email
+        </Button>
 
-      <Button
-        onClick={loginDemoUser}
-        variant="light"
-      >
-        Demo Login
-      </Button>
-    </form>
+        <Button
+          onClick={loginDemoUser}
+          variant="light"
+        >
+          Demo Login
+        </Button>
+      </form>
+    </Spin>
   );
 }
 

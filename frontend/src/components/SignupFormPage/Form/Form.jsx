@@ -6,6 +6,7 @@ import { validate } from 'utils';
 
 import TextInput from 'components/shared/TextInput';
 import Button from 'components/shared/Button';
+import Spin from 'components/shared/Spin';
 
 function Form() {
   const [firstName, setFirstName] = useState('');
@@ -13,6 +14,7 @@ function Form() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -88,6 +90,8 @@ function Form() {
       return;
     }
 
+    setLoading(true);
+
     const body = {
       firstName,
       lastName,
@@ -100,6 +104,8 @@ function Form() {
     } catch (res) {
       const data = await res.json();
       setErrors(data.errorFields);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -112,54 +118,56 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextInput
-        name="email"
-        type="email"
-        value={email}
-        onChange={handleFieldChange(setEmail)}
-        placeholder="name@work-email.com"
-        error={errors.email}
-        onBlur={validateField}
-      />
+    <Spin spinning={loading}>
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          name="email"
+          type="email"
+          value={email}
+          onChange={handleFieldChange(setEmail)}
+          placeholder="name@work-email.com"
+          error={errors.email}
+          onBlur={validateField}
+        />
 
-      <TextInput
-        name="firstName"
-        type="text"
-        value={firstName}
-        onChange={handleFieldChange(setFirstName)}
-        placeholder="First name"
-        error={errors.firstName}
-        onBlur={validateField}
-      />
+        <TextInput
+          name="firstName"
+          type="text"
+          value={firstName}
+          onChange={handleFieldChange(setFirstName)}
+          placeholder="First name"
+          error={errors.firstName}
+          onBlur={validateField}
+        />
 
-      <TextInput
-        name="lastName"
-        type="text"
-        value={lastName}
-        onChange={handleFieldChange(setLastName)}
-        placeholder="Last name"
-        error={errors.lastName}
-        onBlur={validateField}
-      />
+        <TextInput
+          name="lastName"
+          type="text"
+          value={lastName}
+          onChange={handleFieldChange(setLastName)}
+          placeholder="Last name"
+          error={errors.lastName}
+          onBlur={validateField}
+        />
 
-      <TextInput
-        name="password"
-        type="password"
-        value={password}
-        onChange={handleFieldChange(setPassword)}
-        placeholder="Password"
-        error={errors.password}
-        onBlur={validateField}
-      />
+        <TextInput
+          name="password"
+          type="password"
+          value={password}
+          onChange={handleFieldChange(setPassword)}
+          placeholder="Password"
+          error={errors.password}
+          onBlur={validateField}
+        />
 
-      <Button
-        submit
-        variant="dark"
-      >
-        Sign Up
-      </Button>
-    </form>
+        <Button
+          submit
+          variant="dark"
+        >
+          Sign Up
+        </Button>
+      </form>
+    </Spin>
   );
 }
 
