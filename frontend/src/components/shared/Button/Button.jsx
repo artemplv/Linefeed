@@ -33,7 +33,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  children: PropTypes.node.isRequired,
   variant: PropTypes.string,
   className: PropTypes.string,
   submit: PropTypes.bool,
