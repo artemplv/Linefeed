@@ -20,10 +20,11 @@ const login = (user) => async (dispatch) => {
 
     const data = await response.json();
     dispatch(setCurrentUser(data.user));
+
     return response;
   } catch (err) {
     callAlert.error("Couldn't sign in");
-    return null;
+    throw err;
   }
 };
 

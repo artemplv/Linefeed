@@ -15,6 +15,7 @@ const signup = (user) => async (dispatch) => {
     }
   } catch (err) {
     callAlert.error("Couldn't sign up");
+    throw err;
   }
 };
 
