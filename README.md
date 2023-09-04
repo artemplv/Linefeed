@@ -1,6 +1,6 @@
 # Linefeed
 
-## [Linefeed live](https://slack-clone-ja8s.onrender.com/)
+## [Linefeed live](https://linefeed.onrender.com)
 
 ## Description
 
