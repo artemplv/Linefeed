@@ -4,7 +4,7 @@
 
 ## Description
 
-Linefeed is a collaborative business messaging application inspired by Slack. On Linefeed, users can create workspaces for their teams, organize their chats in different channels and message directly to other users on the same workspace.
+Linefeed is a collaborative business messaging application inspired by Slack. On Linefeed, users can create workspaces for their teams, organize their chats in different channels, and message directly to other users on the same workspace.
 
 
 ## Technology
