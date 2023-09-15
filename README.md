@@ -21,7 +21,7 @@ Action Cable, which integrates WebSockets with the rest of the application, is u
 
 ### PostgreSQL
 
-PostgreSQL with Active Storage is used to store and manipulate the app's data. Active Storage is used to store images with Amazon Web Services and associate them with users and workspaces.
+PostgreSQL with Active Record is used to store and manipulate the app's data. Active Storage is used to store images with Amazon Web Services and associate them with users and workspaces.
 
 ## Features
 
