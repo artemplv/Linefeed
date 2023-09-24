@@ -38,7 +38,7 @@ Users can have different workspaces in order to organize work with different tea
 <img width="600" alt="workspaces view" src="https://github.com/artemplv/Linefeed/assets/48654322/abb8588e-66da-4b36-bb26-c7916de74902">
 
 
-The process of creating a workspace is broken down into a few steps that guide you through the process. It also includes a step where you can add users to the new workspace.
+The process of creating a workspace is broken down into a few steps that guide you through it. It also includes a step where you can add users to the new workspace.
 
 <img width="600" alt="workspace creation" src="https://github.com/artemplv/Linefeed/assets/48654322/8a1f37b6-f2a7-44f4-beb4-7515ca20045c">
 
